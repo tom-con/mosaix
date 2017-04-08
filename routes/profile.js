@@ -23,19 +23,27 @@ router.get('/:id', (req, res, next) => {
             getSpritesByUser(id)
               .then((allSprites) => {
                 res.render('myProfile', {
-                  user: userFromKnex.username,
+                  user: userFromKnex,
                   sprites: allSprites
                 })
               })
           } else {
-            res.render('profile', {
-              user: userFromKnex
-            });
+            getSpritesByUser(id)
+              .then((allSprites) => {
+                res.render('profile', {
+                  user: userFromKnex,
+                  sprites: allSprites
+                })
+              })
           }
         } else {
-          res.render('profile', {
-            user: userFromKnex
-          });
+          getSpritesByUser(id)
+            .then((allSprites) => {
+              res.render('profile', {
+                user: userFromKnex,
+                sprites: allSprites
+              })
+            })
         }
       } else {
         res.redirect('/index')

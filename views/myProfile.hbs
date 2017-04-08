@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>asd</title>
+    <title>My Profile</title>
   </head>
   <body>
-    <h1>Your Profile</h1>
+    <h1>{{user.username}} - Your Profile</h1>
+    <img width="100px" src="{{user.user_picture}}">
     {{#each sprites}}
       <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
       <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
