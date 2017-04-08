@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
-const getSpriteWithUserCommentsLikes = require('./spriteFunctions.js').getSpriteWithUserCommentsLikes;
+const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
 
 router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
+
+
 
 router.get('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
@@ -17,17 +19,23 @@ router.get('/:id', (req, res, next) => {
       if (userFromKnex) {
         if (req.cookies.token) {
           let decodedUser = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-          console.log(decodedUser.id, id);
           if (decodedUser.id === id) {
-            console.log("in the if");
-            res.render('myProfile', {
+            getSpritesByUser(id)
+              .then((allSprites) => {
+                res.render('myProfile', {
+                  user: userFromKnex.username,
+                  sprites: allSprites
+                })
+              })
+          } else {
+            res.render('profile', {
               user: userFromKnex
             });
-          } else {
-            res.render('profile', {user: userFromKnex});
           }
         } else {
-          res.render('profile', {user: userFromKnex});
+          res.render('profile', {
+            user: userFromKnex
+          });
         }
       } else {
         res.redirect('/index')

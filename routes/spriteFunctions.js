@@ -36,4 +36,32 @@ let getSpriteWithUserCommentsLikes = (spriteId) => {
   })
 }
 
-module.exports.getSpriteWithUserCommentsLikes = getSpriteWithUserCommentsLikes;
+let getOneSprite = (spriteId) => {
+  return knex('sprites')
+    .where('sprites.id', spriteId)
+    .first()
+    .then((spriteFromKnex) => {
+      return getSpriteWithUserCommentsLikes(spriteFromKnex.id)
+    })
+}
+
+let getSpritesByUser = (userId) => {
+  return knex('sprites')
+    .select('id')
+    .where('user_id', userId)
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
+    })
+}
+
+let getAllSprites = () => {
+  return knex('sprites')
+    .select('id')
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
+    })
+}
+
+module.exports.getSpritesByUser = getSpritesByUser;
+module.exports.getAllSprites = getAllSprites;
+module.exports.getOneSprite = getOneSprite;
