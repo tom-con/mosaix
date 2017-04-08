@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
+const getSpriteWithUserCommentsLikes = require('./spriteFunctions.js').getSpriteWithUserCommentsLikes;
 
 router.get('/', (req, res, next) => {
   res.redirect('/index');
