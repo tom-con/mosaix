@@ -16,8 +16,6 @@ router.post('/', (req, res, next) => {
     .first()
     .then((userFromKnex) => {
       if (userFromKnex) {
-        console.log(userFromKnex);
-        console.log(plainTextPassword, userFromKnex.hashed_password);
         bcrypt.compare(plainTextPassword, userFromKnex.hashed_password, (err, result) => {
             if (result) {
               let token = jwt.sign({
