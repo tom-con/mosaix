@@ -22,7 +22,11 @@ router.get('/:id', (req, res, next) => {
             res.render('myProfile', {
               user: userFromKnex
             });
+          } else {
+            res.render('profile', {user: userFromKnex});
           }
+        } else {
+          res.render('profile', {user: userFromKnex});
         }
       } else {
         res.redirect('/index')

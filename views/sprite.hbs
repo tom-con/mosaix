@@ -6,8 +6,9 @@
   </head>
   <body>
     {{#each sprites}}
-      <h4>{{this.name}}</h4>
-      <img src="{{this.picture_url}}">
+      <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
+      <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
+      <img width="200px" src="{{this.render_url}}">
     {{/each}}
   </body>
 </html>
