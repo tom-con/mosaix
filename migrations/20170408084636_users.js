@@ -2,7 +2,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('users', (tbl) => {
     tbl.increments();
     tbl.string('username', 16).unique().notNullable();
-    tbl.specificType('hashed_password', 'char(32)').notNullable();
+    tbl.specificType('hashed_password', 'char(60)').notNullable();
     tbl.string('email', 64).unique().notNullable();
     tbl.boolean('archived_account').defaultTo(false);
     tbl.timestamps(true, true);

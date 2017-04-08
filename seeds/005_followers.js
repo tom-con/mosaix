@@ -55,6 +55,6 @@ exports.seed = function(knex, Promise) {
         }
       ]);
     }).then(() => {
-      return knex.raw("SELECT setval('followers_id_seq', (SELECT MAX(id) FROM followrs));")
+      return knex.raw("SELECT setval('followers_id_seq', (SELECT MAX(id) FROM followers));")
     });
 };

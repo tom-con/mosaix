@@ -7,70 +7,70 @@ exports.seed = function(knex, Promise) {
         {
           id: 1,
           username: 'spriteLiker22',
-          hashed_password: '$2a$12$7GJ5YsSLpd3OKka3OAmvAeZJRxn.BBFmxlbNxT4dxWYKT3jC7mAC.',
+          hashed_password: '$2a$12$8ySbEBHPO4X9v16uHICZbuldkeRVLazWRma827.sduIE5RSHHa9w6',
           email: 'imakesprites@hotmail.com',
           archived_account: false
         },
         {
           id: 2,
           username: 'dietSprite',
-          hashed_password: '$2a$12$YZvrVD7u/d3E5ksE7jJCmu1oFC2oNTb2qwS1TXXqqEj1OnNKS2Ao6',
+          hashed_password: '$2a$12$SL1kXit4vaVmIizz.cEipevyVGU/VgV4RWB68ygaika6B3/AsqYhG',
           email: 'iceinmysprite@hotmail.com',
           archived_account: false
         },
         {
           id: 3,
           username: 'jimmyBigSprites',
-          hashed_password: '$2a$12$hex8B2ab.IdbVEea1yGFLe4QegITqV6GHssj.o7aCjq2zi1Lepv7a',
+          hashed_password: '$2a$12$.iBTd.223O/LDRua9fVDoutqvnPo7cwfr/cAAJCgTcfXRsXoySXiS',
           email: 'jimmythespritegod@hotmail.com',
           archived_account: false
         },
         {
           id: 4,
           username: 'dalesDimmaDOME',
-          hashed_password: '$2a$12$.4suZr02aKXfq.obPw/3xewF6/dnwo304fTSSo.BLmFa4O5NrHmPC',
+          hashed_password: '$2a$12$J1CWK1YjmLJv6GvnVcetDu7jDzwk4E0oXYD9rdZcGA6R8pvqQ1JlG',
           email: 'richcowboy@hotmail.com',
           archived_account: false
         },
         {
           id: 5,
           username: 'winter',
-          hashed_password: '$2a$12$s3COXiDmLNRuQHy.jhGCF.U/uws.BxemwrRC/NeDX5Rgagz3lizBm',
+          hashed_password: '$2a$12$Ka9hBUojc61.lZd8Q2gP.OhY1FT6Cag06SLtHHX3aU/4q7er54xEO',
           email: 'winter@hotmail.com',
           archived_account: false
         },
         {
           id: 6,
           username: 'senpai',
-          hashed_password: '$2a$12$PUCD8IN.5WcYxej3K1L8qei9E9MCrq9998AD4ofS1AGZGAWvw0Veu',
+          hashed_password: '$2a$12$Wvjo2aWIaX3kGOwEpBORguwvURFQkrOuZDVZgj6RDET2BQw0mptda',
           email: 'noticeme@hotmail.com',
           archived_account: false
         },
         {
           id: 7,
           username: '360noScope',
-          hashed_password: '$2a$12$uHsmIoWJxqpPpv55ivFfuO.3mA0DDAWtWa55Lamx3HIPdTElgU8NK',
+          hashed_password: '$2a$12$rLZyPB77/vvFH./7J8Fgs.o8qxAjv7unLotQNqLiA5UdJoXLjzS1W',
           email: '1v1meKid@hotmail.com',
           archived_account: false
         },
         {
           id: 8,
           username: 'RandyBoBandy',
-          hashed_password: '$2a$12$W7O6eR7hS5EmrxGK2DrJ9uQ71g0i9E8qTc.ppJCeZDhie9WQcb6kq',
+          hashed_password: '$2a$12$qgSEHLeszATamjLItnRQe.aucpBsOiqxGTDoFswwG/TbW9CW4Oo4.',
           email: 'mallcop@hotmail.com',
           archived_account: false
         },
         {
           id: 9,
           username: 'NSAagent',
-          hashed_password: '$2a$12$CA89rYmfG/dIsdcE6WZirOTIBoWIRfOfFwsP072UqJkATeG.VVRVq',
+          hashed_password: '$2a$12$fIt0iM56PAFg344GXvIc..5GRxwollJdKdUaivbC2pR1IRWnJRlSu',
           email: 'iworkforthensa@hotmail.com',
           archived_account: false
         },
         {
           id: 10,
           username: 'gamerXgirl',
-          hashed_password: '$2a$12$/NOtWBGanZg8imWzO7C7yOw09youPlnnTQN1lmL4gyzmq2el05O.u',
+          hashed_password: '$2a$12$mErhITpReKsv08nkXa4EeuPzbUca8/BKLxiQustZ9dVo9LILlKmni',
           email: 'doritos@hotmail.com',
           archived_account: false
         }

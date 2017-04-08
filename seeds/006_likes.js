@@ -7,61 +7,61 @@ exports.seed = function(knex, Promise) {
           id: 1,
           author_id: 1,
           sprite_id: 4,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 2,
           author_id: 2,
           sprite_id: 1,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 3,
           author_id: 4,
           sprite_id: 4,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 4,
           author_id: 3,
           sprite_id: 7,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 5,
           author_id: 6,
           sprite_id: 3,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 6,
           author_id: 10,
           sprite_id: 9,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 7,
           author_id: 8,
           sprite_id: 5,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 8,
           author_id: 7,
           sprite_id: 6,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 9,
           author_id: 1,
           sprite_id: 1,
-          isLiked: false
+          isLiked: true
         },
         {
           id: 10,
           author_id: 2,
           sprite_id: 4,
-          isLiked: false
+          isLiked: true
         }
       ]);
     }).then(() => {

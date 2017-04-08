@@ -10,10 +10,11 @@
     <h1>spritr</h1>
     <p>Login</p>
     <form action="login" method="post">
-        <label>Username: <input type="text"></label><br>
-        <label>Password: <input type="password"></label><br>
+        <label>Username: <input type="text" name="username"></label><br>
+        <label>Password: <input type="password" name="password"></label><br>
         <button type="submit">Login</button>
     </form>
+    <h4>{{error}}</h4>
     <p>Or sign in</p>
     <form action="login/signup" method="post">
         <label>Email: <input type="text"></label><br>
