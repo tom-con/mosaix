@@ -46,7 +46,7 @@ router.get('/:id', (req, res, next) => {
             })
         }
       } else {
-        res.redirect('/index')
+        res.redirect('/')
       }
     })
 })
