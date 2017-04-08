@@ -5,10 +5,14 @@
     <title>All Sprites</title>
   </head>
   <body>
-    {{#each sprites}}
-      <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
-      <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
-      <img width="200px" src="{{this.render_url}}">
-    {{/each}}
+      <a href="/sprite/{{this.id}}"><h4>{{sprite.name}}</h4></a>
+      <a href="/profile/{{this.user_id}}"><h5>by {{sprite.username}}</h5></a>
+      <img width="200px" src="{{sprite.render_url}}">
+      <p>Likes: {{sprite.likes}}</p>
+      <h3>Comments:</h3>
+      {{#each sprite.comments}}
+        <h5>{{this.author}}</h5>
+        <p>{{this.content}}</p>
+      {{/each}}
   </body>
 </html>
