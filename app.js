@@ -12,6 +12,7 @@ const profile = require('./routes/profile');
 const login = require('./routes/login');
 const sprite = require('./routes/sprite');
 const users = require('./routes/users');
+const tags = require('./routes/tags');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/login', login);
 app.use('/profile', profile);
 app.use('/sprite', sprite);
 app.use('/users', users);
+app.use('/tags', tags);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,6 +4,9 @@ const knex = require('../knex');
 const jwt = require('jsonwebtoken');
 const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
 
+let login = { link: '/login', text: 'Login'};
+let logout = { link: '/login/logout', text: 'Logout'};
+
 router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
@@ -22,7 +25,8 @@ router.get('/:id', (req, res, next) => {
               .then((allSprites) => {
                 res.render('myProfile', {
                   user: userFromKnex,
-                  sprites: allSprites
+                  sprites: allSprites,
+                  log: logout
                 })
               })
           } else {
@@ -30,7 +34,8 @@ router.get('/:id', (req, res, next) => {
               .then((allSprites) => {
                 res.render('profile', {
                   user: userFromKnex,
-                  sprites: allSprites
+                  sprites: allSprites,
+                  log: logout
                 })
               })
           }
@@ -39,7 +44,8 @@ router.get('/:id', (req, res, next) => {
             .then((allSprites) => {
               res.render('profile', {
                 user: userFromKnex,
-                sprites: allSprites
+                sprites: allSprites,
+                log: login
               })
             })
         }
@@ -54,7 +60,8 @@ router.get('/:id/settings', (req, res, next) => {
     .where('id', req.params.id)
     .first()
     .then((thisUser) => {
-      res.render('settings', {user: thisUser});
+      res.render('settings', {user: thisUser,
+        log: logout});
     })
 })
 
@@ -64,6 +71,17 @@ router.put('/:id/settings', (req, res, next) => {
     .update(updatedInfo)
     .where('id', req.params.id)
     .then(() => {
+      res.status(200).send(true);
+    })
+})
+
+router.delete('/:id/delete', (req, res, next) => {
+  let updatedInfo = req.body;
+  knex('users')
+    .update(updatedInfo)
+    .where('id', req.params.id)
+    .then(() => {
+      res.clearCookie('token');
       res.status(200).send(true);
     })
 })

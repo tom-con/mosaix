@@ -19,5 +19,25 @@ $('#save').click(() => {
   })
 })
 
+$('#delete').click(() => {
+  let id = $(event.target).attr('data-id');
+  console.log(id);
+  let data= {
+    archived_account: true,
+    username: 'deleted',
+    user_summary: 'This user no longer exists.'
+  }
+  $.ajax({
+    method: "DELETE",
+    url: `/profile/${id}/delete`,
+    data: data,
+    success: (result) => {
+      if(result){
+        window.location.replace(`/`);
+      }
+    }
+  })
+})
+
 
 })

@@ -25,11 +25,16 @@ router.get('/:id', (req, res, next) => {
     .then((thisSprite) => {
       console.log(thisSprite);
       if (req.cookies.token) {
+        let tagCreate = "";
         let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        if (thisSprite.id === decodedToken.id) {
+          tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
+        }
         res.render('sprite', {
           sprite: thisSprite,
           currentUser: decodedToken.username,
-          comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`
+          comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
+          tag: tagCreate
         });
       } else {
         res.render('sprite', {
