@@ -3,9 +3,16 @@ const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
 const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
+const fs = require('fs');
 
-let login = { link: '/login', text: 'Login'};
-let logout = { link: '/login/logout', text: 'Logout'};
+let login = {
+  link: '/login',
+  text: 'Login'
+};
+let logout = {
+  link: '/login/logout',
+  text: 'Logout'
+};
 
 router.get('/', (req, res, next) => {
   res.redirect('/index');
@@ -60,9 +67,32 @@ router.get('/:id/settings', (req, res, next) => {
     .where('id', req.params.id)
     .first()
     .then((thisUser) => {
-      res.render('settings', {user: thisUser,
-        log: logout});
+      res.render('settings', {
+        user: thisUser,
+        log: logout
+      });
     })
+})
+
+router.post('/:id/settings/upload', (req, res) => {
+  if(req.files.picture_url.mimetype === 'image/png') {
+    let picture_url = req.files.picture_url;
+    picture_url.mv(`./public/images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`, function(writeErr) {
+    if (writeErr) {
+      return res.status(500).send(err);
+    } else {
+      knex('users')
+        .update('user_picture', `../images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`)
+        .where('id', req.params.id)
+        .then(() => {
+          res.redirect(`/profile/${req.params.id}`);
+        })
+    }
+  });
+  } else {
+
+  }
+
 })
 
 router.put('/:id/settings', (req, res, next) => {

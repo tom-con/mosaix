@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv')
+const fileUpload = require('express-fileupload');
 dotenv.load();
 
 const index = require('./routes/index');
@@ -21,6 +22,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -30,6 +33,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// File upload
+app.use(fileUpload({ safeFileNames: true, limits: { fileSize: 50 * 200 * 200 } }));
+
 
 app.use('/', index);
 app.use('/login', login);
