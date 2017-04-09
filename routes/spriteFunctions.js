@@ -1,21 +1,24 @@
 const knex = require('../knex');
 
 let addTagsToSprite = (spriteId) => {
-  return knex('tags')
-    .where('tags.sprite_id', spriteId)
+  return knex('sprites_tags')
+    .select('tags.name as tagname')
+    .join('tags', 'tags.id', 'sprites_tags.tag_id')
+    .where('sprites_tags.sprite_id', spriteId)
 }
 
 let addCommentsToSprite = (spriteId) => {
   return knex('comments')
     .where('comments.sprite_id', spriteId)
     .where('comments.archived_comment', false)
-    .select('users.username as author', 'comments.created_at as created_at', 'comments.edited as edited', 'comments.content as content')
+    .select('users.username as author', 'comments.created_at as created_at', 'comments.edited as edited', 'comments.content as content', 'comments.id as comment_id')
     .leftOuterJoin('users', 'users.id', 'comments.author_id')
 }
 
 let addLikesToSprite = (spriteId) => {
   return knex('likes')
     .where('likes.sprite_id', spriteId)
+    .where('likes.isLiked', true)
     .count('likes.sprite_id')
 }
 
@@ -32,11 +35,13 @@ let getSpriteWithUserCommentsLikes = (spriteId) => {
   return Promise.all([
     getSprite(spriteId),
     addCommentsToSprite(spriteId),
-    addLikesToSprite(spriteId)
+    addLikesToSprite(spriteId),
+    addTagsToSprite(spriteId)
   ]).then((results) => {
-    let [sprite, comments, likes, user] = results;
+    let [sprite, comments, likes, tags] = results;
     sprite.comments = comments;
     sprite.likes = likes[0].count;
+    sprite.tags = tags;
     return sprite;
   })
 }

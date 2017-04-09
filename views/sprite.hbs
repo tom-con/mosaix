@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../javascripts/sprite.js">
+    </script>
     <title>All Sprites</title>
-  </head>
-  <body>
-      <a href="/sprite/{{this.id}}"><h4>{{sprite.name}}</h4></a>
-      <a href="/profile/{{this.user_id}}"><h5>by {{sprite.username}}</h5></a>
-      <img width="200px" src="{{sprite.render_url}}">
-      <p>Likes: {{sprite.likes}}</p>
-      <h3>Comments:</h3>
-      {{#each sprite.comments}}
-        <h5>{{this.author}}</h5>
-        <p>{{this.content}}</p>
-      {{/each}}
-  </body>
+</head>
+
+<body>
+  <p class="currentUser" data-name="{{currentUser}}"> Logged in as {{currentUser}}</p>
+    <a href="/sprite/{{sprite.id}}"><h4>{{sprite.name}}</h4></a>
+    <a href="/profile/{{sprite.user_id}}"><h5>by {{sprite.username}}</h5></a>
+    <img id="theSprite" width="200px" src="{{sprite.render_url}}" data-id="{{sprite.id}}">
+    <h5> Tags: </h5>
+    {{#each sprite.tags}}
+        <p>{{this.tagname}}</p>
+    {{/each}}
+    <a href="/sprite/{{sprite.id}}/like"><p>Likes: {{sprite.likes}}</p></a>
+    <h3>Comments:</h3>
+    {{#each sprite.comments}}
+        <div id="{{this.comment_id}}" class="{{this.author}}" data-id="{{this.comment_id}}">
+            <h5>{{this.author}}</h5>
+            <p>{{this.content}}</p>
+        </div>
+    {{/each}}
+    {{error}} {{{comment}}}
+
+</body>
+
 </html>
