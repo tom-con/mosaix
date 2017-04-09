@@ -8,8 +8,6 @@ router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
 
-
-
 router.get('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);
   knex('users')
@@ -48,6 +46,25 @@ router.get('/:id', (req, res, next) => {
       } else {
         res.redirect('/')
       }
+    })
+})
+
+router.get('/:id/settings', (req, res, next) => {
+  knex('users')
+    .where('id', req.params.id)
+    .first()
+    .then((thisUser) => {
+      res.render('settings', {user: thisUser});
+    })
+})
+
+router.put('/:id/settings', (req, res, next) => {
+  let updatedInfo = req.body;
+  knex('users')
+    .update(updatedInfo)
+    .where('id', req.params.id)
+    .then(() => {
+      res.status(200).send(true);
     })
 })
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../javascripts/settings.js">
+    </script>
+    <title>{{user.username}}'s Settings'</title>
+</head>
+
+<body>
+    <div id="accountDetails">
+        <img width="50px"src="{{user.user_picture}}"><label> Update picture url: <input type="text" name="user_picture" id="picture" value="{{user.user_picture}}"></label><br>
+        <label>My Summary: <textarea id="summary" name="user_summary">{{user.user_summary}}</textarea><br>
+    <button id="save" data-id="{{user.id}}">Save</button><br>
+    <button id="delete" data-id="{{user.id}}">Delete</button>
+  </div>
+
+  </body>
+</html>

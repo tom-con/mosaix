@@ -8,10 +8,12 @@
     <a href="/"><h1>SPRITR</h1></a>
     <h1>{{user.username}} - Your Profile</h1>
     <img width="100px" src="{{user.user_picture}}"><br>
+    <p>{{user.user_summary}}</p>
     <button>Create</button><br>
     <button>My Sprites</button><br>
-    <button>News Feed</button><br>
+    <button><a href="/sprite">News Feed</a></button><br>
     <button>Trending</button>
+    <a href="/profile/{{user.id}}/settings"<button>Settings</button>
     {{#each sprites}}
       <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
       <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>

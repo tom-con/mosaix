@@ -13,6 +13,7 @@ let addCommentsToSprite = (spriteId) => {
     .where('comments.archived_comment', false)
     .select('users.username as author', 'comments.created_at as created_at', 'comments.edited as edited', 'comments.content as content', 'comments.id as comment_id')
     .leftOuterJoin('users', 'users.id', 'comments.author_id')
+    .orderBy('comments.created_at', 'DESC')
 }
 
 let addLikesToSprite = (spriteId) => {
@@ -67,6 +68,7 @@ let getSpritesByUser = (userId) => {
 let getAllSprites = () => {
   return knex('sprites')
     .select('id')
+    .orderBy('created_at', 'DESC')
     .then((spriteIds) => {
       return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
     })
