@@ -17,12 +17,13 @@
     <h4>{{error}}</h4>
     <p>Or sign in</p>
     <form action="login/signup" method="post">
-        <label>Email: <input type="text"></label><br>
-        <label>Username: <input type="text"></label><br>
-        <label>Password: <input type="password"></label><br>
-        <label>Confirm Password: <input type="password"></label><br>
+        <label>Email: <input type="text" name="email"></label><br>
+        <label>Username: <input type="text" name="username"></label><br>
+        <label>Password: <input type="password" name="password"></label><br>
+        <label>Confirm Password: <input type="password" name="confirmPassword"></label><br>
         <button type="submit">Sign Up</button>
     </form>
+    <h4>{{error2}}</h4>
 </body>
 
 </html>

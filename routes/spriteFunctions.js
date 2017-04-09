@@ -1,5 +1,10 @@
 const knex = require('../knex');
 
+let addTagsToSprite = (spriteId) => {
+  return knex('tags')
+    .where('tags.sprite_id', spriteId)
+}
+
 let addCommentsToSprite = (spriteId) => {
   return knex('comments')
     .where('comments.sprite_id', spriteId)
@@ -27,7 +32,7 @@ let getSpriteWithUserCommentsLikes = (spriteId) => {
   return Promise.all([
     getSprite(spriteId),
     addCommentsToSprite(spriteId),
-    addLikesToSprite(spriteId),
+    addLikesToSprite(spriteId)
   ]).then((results) => {
     let [sprite, comments, likes, user] = results;
     sprite.comments = comments;
