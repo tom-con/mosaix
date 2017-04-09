@@ -4,6 +4,7 @@ const knex = require('../knex');
 const getSpriteWithUserCommentsLikes = require('./spriteFunctions.js').getSpriteWithUserCommentsLikes;
 
 
+
 router.post('/:id', function(req, res, next) {
   let id = req.params.id;
   let name = req.body.tagname;
@@ -40,7 +41,17 @@ router.post('/:id', function(req, res, next) {
           })
       }
     })
-
 });
+
+router.delete('/remove', (req, res, next) => {
+  let id = req.body.id;
+  knex('sprites_tags')
+    .where('id', id)
+    .first()
+    .del()
+    .then(() => {
+      res.status(200).send(true);
+    })
+})
 
 module.exports = router;

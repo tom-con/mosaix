@@ -21,4 +21,18 @@ $().ready(() => {
       error: () => {}
     })
   })
+  $('.removeTag').click(() => {
+    let linkId = $(event.target).attr('data-id');
+    $.ajax({
+      method: "DELETE",
+      url: `/tags/remove`,
+      data: {id: linkId},
+      success: (result) => {
+        if(result){
+          location.reload();
+        }
+      },
+      error: () => {}
+    })
+  })
 })

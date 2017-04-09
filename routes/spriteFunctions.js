@@ -2,7 +2,7 @@ const knex = require('../knex');
 
 let addTagsToSprite = (spriteId) => {
   return knex('sprites_tags')
-    .select('tags.name as tagname')
+    .select('tags.name as tagname', 'tags.id as tagId', 'sprites_tags.id as linkId')
     .join('tags', 'tags.id', 'sprites_tags.tag_id')
     .where('sprites_tags.sprite_id', spriteId)
 }

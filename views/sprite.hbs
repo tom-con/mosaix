@@ -17,7 +17,7 @@
     <img id="theSprite" width="200px" src="{{sprite.render_url}}" data-id="{{sprite.id}}">
     <h5> Tags: </h5>
     {{#each sprite.tags}}
-        <p>{{this.tagname}}</p>
+        <p>{{this.tagname}} <a class="removeTag" data-id="{{this.linkId}}">X</a></p>
     {{/each}}
     {{{tag}}}
     <a href="/sprite/{{sprite.id}}/like"><p>Likes: {{sprite.likes}}</p></a>
