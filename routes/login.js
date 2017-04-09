@@ -54,7 +54,7 @@ router.post('/signup', (req, res, next) => {
       .insert(newUser)
       .then((user) => {
         console.log(user);
-        let token = makeJWT(user);
+        let token = makeJWT(user[0]);
         res.cookie('token', token);
         res.redirect(`/profile/${user[0].id}`)
       })
