@@ -14,6 +14,7 @@ const login = require('./routes/login');
 const sprite = require('./routes/sprite');
 const users = require('./routes/users');
 const tags = require('./routes/tags');
+const create = require('./routes/create');
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // File upload
-app.use(fileUpload({ safeFileNames: true, limits: { fileSize: 50 * 200 * 200 } }));
+app.use(fileUpload({ safeFileNames: true }));
 
 
 app.use('/', index);
@@ -44,6 +45,7 @@ app.use('/profile', profile);
 app.use('/sprite', sprite);
 app.use('/users', users);
 app.use('/tags', tags);
+app.use('/create', create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

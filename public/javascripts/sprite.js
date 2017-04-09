@@ -35,4 +35,8 @@ $().ready(() => {
       error: () => {}
     })
   })
+  $('#edit').click(() => {
+    let id = $(event.target).attr('data-id');
+    $('#editBox').append(`<form action="/sprite/${id}/update" method="post"><input type="text" name="name"><button type="submit">Submit</button></form>`);
+  })
 })

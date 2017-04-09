@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
 const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
-const fs = require('fs');
+
 
 let login = {
   link: '/login',
@@ -82,7 +82,7 @@ router.post('/:id/settings/upload', (req, res) => {
       return res.status(500).send(err);
     } else {
       knex('users')
-        .update('user_picture', `../images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`)
+        .update('user_picture', `http://localhost:3000/images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`)
         .where('id', req.params.id)
         .then(() => {
           res.redirect(`/profile/${req.params.id}`);

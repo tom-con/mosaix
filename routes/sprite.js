@@ -11,7 +11,6 @@ const jwt = require('jsonwebtoken');
 router.get('/', (req, res, next) => {
   getAllSprites()
     .then((allSprites) => {
-      console.log(allSprites[8].tags);
       res.render('sprites', {
         sprites: allSprites
       })
@@ -23,18 +22,20 @@ router.get('/:id', (req, res, next) => {
   let id = req.params.id;
   getOneSprite(id)
     .then((thisSprite) => {
-      console.log(thisSprite);
       if (req.cookies.token) {
         let tagCreate = "";
+        let edit = "";
         let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-        if (thisSprite.id === decodedToken.id) {
+        if (thisSprite.user_id === decodedToken.id) {
           tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
+          edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
         }
         res.render('sprite', {
           sprite: thisSprite,
           currentUser: decodedToken.username,
           comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
-          tag: tagCreate
+          tag: tagCreate,
+          edit: edit
         });
       } else {
         res.render('sprite', {
@@ -105,6 +106,17 @@ router.post('/:id', (req, res, next) => {
         res.redirect(`/sprite/${req.params.id}`);
       })
   }
+
+})
+
+router.post('/:id/update', (req, res, next) => {
+  let id = req.params.id;
+  knex('sprites')
+    .update({name: req.body.name})
+    .where('id', id)
+    .then(() => {
+      res.redirect(`/sprite/${id}`)
+    })
 
 })
 

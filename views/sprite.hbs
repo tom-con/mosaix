@@ -13,6 +13,9 @@
           <a href="{{log.link}}">{{log.text}}</a>
   <p class="currentUser" data-name="{{currentUser}}"> Logged in as {{currentUser}}</p>
     <a href="/sprite/{{sprite.id}}"><h4>{{sprite.name}}</h4></a>
+    <div id="editBox">
+    {{{edit}}}
+  </div>
     <a href="/profile/{{sprite.user_id}}"><h5>by {{sprite.username}}</h5></a>
     <img id="theSprite" width="200px" src="{{sprite.render_url}}" data-id="{{sprite.id}}">
     <h5> Tags: </h5>
