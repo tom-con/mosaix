@@ -5,17 +5,14 @@ const authorized = require('./loginFunctions').authorized;
 
 
 router.post('/:id', authorized, (req, res, next) => {
-  console.log("very authoirzed for tags");
   let id = req.params.id;
   let name = req.body.tagname;
-  console.log(name);
   let user = req.locals.user;
   knex('tags')
     .where('name', name)
     .first()
     .then((thisTag) => {
       if (thisTag) {
-        console.log(thisTag);
         knex('sprites_tags')
           .insert({
             sprite_id: id,
@@ -31,7 +28,6 @@ router.post('/:id', authorized, (req, res, next) => {
             name: name
           })
           .then((newTag) => {
-            console.log(newTag);
             knex('sprites_tags')
               .insert({
                 sprite_id: id,
@@ -46,7 +42,6 @@ router.post('/:id', authorized, (req, res, next) => {
 });
 
 router.post('/:id', (req, res, next) => {
-  console.log("Not authorized to post tags");
 })
 
 router.delete('/remove', authorized, (req, res, next) => {
