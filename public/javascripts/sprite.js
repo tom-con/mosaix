@@ -11,7 +11,7 @@ $().ready(() => {
     console.log(`Clicked delete on comment ${$(event.target).attr('data-id')}`);
     $.ajax({
       method: "DELETE",
-      url: `/sprite/${spriteId}`,
+      url: `/comments/${spriteId}`,
       data: {id: $(event.target).attr('data-id')},
       success: (result) => {
         if(result){

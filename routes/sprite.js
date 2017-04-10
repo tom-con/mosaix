@@ -99,9 +99,6 @@ router.post('/:id/update', (req, res, next) => {
     .then(() => {
       res.redirect(`/sprite/${id}`)
     })
-
 })
-
-
 
 module.exports = router;
