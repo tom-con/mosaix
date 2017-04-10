@@ -24,6 +24,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', authorized, (req, res, next) => {
+  console.log("at the sprite/:id");
   let id = req.params.id;
   let user = req.locals.user;
   getOneSprite(id)
@@ -44,6 +45,7 @@ router.get('/:id', authorized, (req, res, next) => {
     })
 })
 router.get('/:id', (req, res, next) => {
+  console.log("tryna get here");
   let id = req.params.id;
   getOneSprite(id)
     .then((thisSprite) => {
