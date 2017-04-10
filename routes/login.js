@@ -52,15 +52,13 @@ router.post('/signup', (req, res, next) => {
       .returning('*')
       .insert(newUser)
       .then((user) => {
-        console.log(user);
-        let token = makeJWT(user[0]);
-        res.cookie('token', token);
+        res.cookie('token', makeJWT(user[0]));
         res.redirect(`/profile/${user[0].id}`)
       })
   }
 })
 
-router.get('/logout', (req,res,next) => {
+router.get('/logout', (req, res, next) => {
   res.clearCookie('token');
   res.redirect('/');
 })

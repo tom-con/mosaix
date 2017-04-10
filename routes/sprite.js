@@ -8,9 +8,8 @@ const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
 const toggleLike = require('./likeFunctions').toggleLike;
 
-// get '/' should return all the sprites WORKS
-// get '/:id' should return one sprite that is selected WORKS -- Needs to be clean
-// post '/' should add a sprite based on who is logged in
+
+
 // put '/:id' should update a sprite based on who is logged in and which sprite is selected
 //delete '/:id' should delete(archive) a sprite based on who is logged in and which sprite is selected
 

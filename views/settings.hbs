@@ -12,15 +12,14 @@
 <body>
     <a href="{{log.link}}">{{log.text}}</a>
     <div id="accountDetails">
-        <img width="50px" src="{{user.user_picture}}"><label><br>
-          Upload a picture(200x200):      <form ref='uploadForm' id='uploadForm' action='/profile/{{user.id}}/settings/upload' method='post' encType="multipart/form-data">
-        <input type="file" name="picture_url">
-        <input type='submit'>
-    </form> <br>
-     Update picture url: <input type="text" name="user_picture" id="picture" value=""></label><br>
+        <img width="50px" src="{{user.user_picture}}"><br> Upload a picture(200x200):
+        <form ref='uploadForm' id='uploadForm' action='/profile/{{user.id}}/settings/upload' method='post' encType="multipart/form-data">
+            <input type="file" name="picture_url">
+            <input type='submit'>
+        </form> <br>
         <label>My Summary: <textarea id="summary" name="user_summary">{{user.user_summary}}</textarea><br>
     <button id="save" data-id="{{user.id}}">Save</button><br>
-    <button id="delete" data-id="{{user.id}}">Delete</button>
+    <button id="delete" data-id="{{user.id}}">Delete Your Account?</button>
   </div>
 
   </body>
