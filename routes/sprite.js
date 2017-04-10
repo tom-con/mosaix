@@ -4,9 +4,14 @@ const knex = require('../knex');
 const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
 const getAllSprites = require('./spriteFunctions').getAllSprites;
 const getOneSprite = require('./spriteFunctions').getOneSprite;
+const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
 
-
+// get '/' should return all the sprites
+// get '/:id' should return one sprite that is selected
+// post '/' should add a sprite based on who is logged in
+// put '/:id' should update a sprite based on who is logged in and which sprite is selected
+//delete '/:id' should delete(archive) a sprite based on who is logged in and which sprite is selected
 
 router.get('/', (req, res, next) => {
   getAllSprites()
@@ -17,33 +22,37 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/:id', (req, res, next) => {
-
+router.get('/:id', authorized, (req, res, next) => {
   let id = req.params.id;
+  let user = req.locals.user;
   getOneSprite(id)
     .then((thisSprite) => {
       if (req.cookies.token) {
         let tagCreate = "";
         let edit = "";
-        let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-        if (thisSprite.user_id === decodedToken.id) {
+        if (thisSprite.user_id === user.id) {
           tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
           edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
         }
         res.render('sprite', {
           sprite: thisSprite,
-          currentUser: decodedToken.username,
+          currentUser: user.username,
           comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
           tag: tagCreate,
           edit: edit
         });
-      } else {
-        res.render('sprite', {
-          sprite: thisSprite,
-          comment: '<a href="/login"><button>Login to Comment</button></a>'
-        });
       }
+    })
 
+})
+router.get('/:id', (req, res, next) => {
+    let id = req.params.id;
+  getOneSprite(id)
+    .then((thisSprite) => {
+      res.render('sprite', {
+        sprite: thisSprite,
+        comment: '<a href="/login"><button>Login to Comment</button></a>'
+      });
     })
 })
 
@@ -123,7 +132,9 @@ router.post('/', (req, res, next) => {
 router.post('/:id/update', (req, res, next) => {
   let id = req.params.id;
   knex('sprites')
-    .update({name: req.body.name})
+    .update({
+      name: req.body.name
+    })
     .where('id', id)
     .then(() => {
       res.redirect(`/sprite/${id}`)
@@ -133,9 +144,11 @@ router.post('/:id/update', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   knex('comments')
+    .update({
+      archived_comment: true
+    })
     .where('id', req.body.id)
     .first()
-    .del()
     .then(() => {
       res.status(200).send(true);
     })
