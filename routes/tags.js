@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const getSpriteWithUserCommentsLikes = require('./spriteFunctions.js').getSpriteWithUserCommentsLikes;
+const authorized = require('./loginFunctions').authorized;
 
 
-
-router.post('/:id', function(req, res, next) {
+router.post('/:id', authorized, (req, res, next) => {
   let id = req.params.id;
-  let name = req.body.tagname;
+  let name = req.body.name;
   knex('tags')
     .where('name', name)
     .first()
@@ -43,7 +42,7 @@ router.post('/:id', function(req, res, next) {
     })
 });
 
-router.delete('/remove', (req, res, next) => {
+router.delete('/remove', authorized, (req, res, next) => {
   let id = req.body.id;
   knex('sprites_tags')
     .where('id', id)

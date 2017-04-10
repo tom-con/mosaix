@@ -6,9 +6,10 @@ const getAllSprites = require('./spriteFunctions').getAllSprites;
 const getOneSprite = require('./spriteFunctions').getOneSprite;
 const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
+const toggleLike = require('./likeFunctions').toggleLike;
 
-// get '/' should return all the sprites
-// get '/:id' should return one sprite that is selected
+// get '/' should return all the sprites WORKS
+// get '/:id' should return one sprite that is selected WORKS -- Needs to be clean
 // post '/' should add a sprite based on who is logged in
 // put '/:id' should update a sprite based on who is logged in and which sprite is selected
 //delete '/:id' should delete(archive) a sprite based on who is logged in and which sprite is selected
@@ -27,26 +28,23 @@ router.get('/:id', authorized, (req, res, next) => {
   let user = req.locals.user;
   getOneSprite(id)
     .then((thisSprite) => {
-      if (req.cookies.token) {
-        let tagCreate = "";
-        let edit = "";
-        if (thisSprite.user_id === user.id) {
-          tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
-          edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
-        }
-        res.render('sprite', {
-          sprite: thisSprite,
-          currentUser: user.username,
-          comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
-          tag: tagCreate,
-          edit: edit
-        });
+      let tagCreate = "";
+      let edit = "";
+      if (thisSprite.user_id === user.id) {
+        tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
+        edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
       }
+      res.render('sprite', {
+        sprite: thisSprite,
+        currentUser: user.username,
+        comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
+        tag: tagCreate,
+        edit: edit
+      });
     })
-
 })
 router.get('/:id', (req, res, next) => {
-    let id = req.params.id;
+  let id = req.params.id;
   getOneSprite(id)
     .then((thisSprite) => {
       res.render('sprite', {
@@ -56,50 +54,12 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+router.get('/:id/like', authorized, toggleLike, (req, res, next) => {
+  res.redirect(`/sprite/${req.params.id}`);
+})
+
 router.get('/:id/like', (req, res, next) => {
-  if (req.cookies.token) {
-    let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    console.log(decodedToken, req.params.id);
-    knex('likes')
-      .where('author_id', decodedToken.id)
-      .where('sprite_id', req.params.id)
-      .first()
-      .then((specificLike) => {
-        console.log(specificLike);
-        if (specificLike && !specificLike.isLiked) {
-          knex('likes')
-            .update({
-              isLiked: true
-            })
-            .where('author_id', decodedToken.id)
-            .where('sprite_id', req.params.id)
-            .then(() => {
-              res.redirect(`/sprite/${req.params.id}`);
-            })
-        } else if (specificLike && specificLike.isLiked) {
-          knex('likes')
-            .update({
-              isLiked: false
-            })
-            .where('author_id', decodedToken.id)
-            .where('sprite_id', req.params.id)
-            .then(() => {
-              res.redirect(`/sprite/${req.params.id}`);
-            })
-        } else {
-          console.log(decodedToken.id, req.params.id);
-          knex('likes')
-            .insert({
-              author_id: decodedToken.id,
-              sprite_id: req.params.id,
-              isLiked: true
-            })
-            .then(() => {
-              res.redirect(`/sprite/${req.params.id}`);
-            })
-        }
-      })
-  }
+  res.redirect(`/sprite/${req.params.id}`);
 })
 
 router.post('/', (req, res, next) => {
@@ -108,7 +68,7 @@ router.post('/', (req, res, next) => {
     let id = decoded.id;
     if (req.files.picture_url.mimetype === 'image/png') {
       let picture_url = req.files.picture_url;
-      picture_url.mv(`./public/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`, function(writeErr) {
+      picture_url.mv(`./public/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`, (writeErr) => {
         if (writeErr) {
           return res.status(500).send(err);
         } else {

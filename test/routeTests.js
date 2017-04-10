@@ -48,6 +48,13 @@ describe('GET /sprite/:id', () => {
       .expect(200, done)
   })
 });
+describe('GET /sprite/:id/like', () => {
+  it('Directs to a single sprite', done => {
+    request(app)
+      .get('/sprite/3')
+      .expect(200, done)
+  })
+});
 describe('POST /sprite without token', () => {
   it('Should return 403 without a token', done => {
     request(app)

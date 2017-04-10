@@ -9,9 +9,11 @@ let makeJWT = (user) => {
 }
 
 let authorized = (req, res, next) => {
+  let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
   if(req.cookies.token){
-    let decodedToken = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    req.locals.user = decodedToken;
+    req.locals = {
+      user: decodedToken
+    }
     next();
   } else {
     next('route');
@@ -19,7 +21,6 @@ let authorized = (req, res, next) => {
 }
 
 
-module.exports.makeJWT = makeJWT;
 module.exports = {
   makeJWT: makeJWT,
   authorized: authorized

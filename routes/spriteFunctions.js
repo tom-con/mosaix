@@ -29,6 +29,7 @@ let getSprite = (spriteId) => {
     .select('sprites.id as id', 'sprites.name as name', 'sprites.render_url as render_url', 'users.id as user_id', 'users.username as username')
     .leftOuterJoin('users', 'sprites.user_id', 'users.id')
     .where('sprites.id', spriteId)
+    .where('archived_sprite', false)
     .first();
 }
 
