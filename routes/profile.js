@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', authorized, (req, res, next) => {
   let id = parseInt(req.params.id);
   knex('users')
     .where('id', id)
@@ -30,10 +30,7 @@ router.get('/:id', (req, res, next) => {
           sprites: allSprites,
           log: logout
         }
-        if (req.cookies.token) {
-          let decodedUser = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-
-          if (decodedUser.id === id) {
+          if (req.locals.user.id === id) {
             getSpritesByUser(id)
               .then((allSprites) => {
                 res.render('myProfile', data)
@@ -44,12 +41,13 @@ router.get('/:id', (req, res, next) => {
                 res.render('profile', data)
               })
           }
-        } else {
-          getSpritesByUser(id)
-            .then((allSprites) => {
-              res.render('profile', data)
-            })
-        }
+
+        // else {
+        //   getSpritesByUser(id)
+        //     .then((allSprites) => {
+        //       res.render('profile', data)
+        //     })
+        // }
       } else {
         res.redirect('/')
       }
