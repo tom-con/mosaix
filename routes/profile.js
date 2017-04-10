@@ -3,6 +3,7 @@ const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
 const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
+const authorized = require('loginFunctions').authorized;
 
 
 let login = {
