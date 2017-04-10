@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'test';
 
 const request = require('supertest');
 const expect = require('chai').expect;
+const jwt = require('jsonwebtoken');
 const app = require('../app');
 const knex = require('../knex');
 
@@ -40,18 +41,46 @@ describe('GET /sprite', () => {
       .expect(200, done)
   })
 });
-xdescribe('GET /sprite/:id', () => {
-
+describe('GET /sprite/:id', () => {
+  it('Directs to a single sprite', done => {
+    request(app)
+      .get('/sprite/3')
+      .expect(200, done)
+  })
 });
-xdescribe('POST /sprite', () => {
-
+describe('POST /sprite without token', () => {
+  it('Should return 403 without a token', done => {
+    request(app)
+      .post('/sprite')
+      .send({
+        render_url: `http://www.opengeek.net/images/ogeek/2014/12/img_83.jpg`,
+        user_id: 4,
+        name: 'Legoman'
+      })
+      .expect(403, done)
+  })
 });
-xdescribe('GET /profile', () => {
-
+describe('POST /sprite/:id/update', () => {
+  it('Updates a sprite', done => {
+    request(app)
+      .post('/sprite/8/update')
+      .send({
+        name: 'Family Guy'
+      })
+      .expect(302, done)
+  })
 });
-xdescribe('GET /profile/:id', () => {
-
+describe('GET /profile', () => {
+  it('Redirects to home ', done => {
+    request(app)
+      .get('/profile')
+      .expect(302, done)
+  })
 });
-xdescribe('POST /profile', () => {
-
+describe('GET /profile/:id', () => {
+  it('Directs to the correct profile', done => {
+    request(app)
+      .get('/profile/4')
+      .expect(200, done)
+  })
 });
