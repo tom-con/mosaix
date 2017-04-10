@@ -20,8 +20,7 @@ router.post('/', (req, res, next) => {
       if (userFromKnex) {
         bcrypt.compare(plainTextPassword, userFromKnex.hashed_password, (err, result) => {
           if (result) {
-            let token = makeJWT(userFromKnex);
-            res.cookie('token', token);
+            res.cookie('token', makeJWT(userFromKnex));
             res.redirect(`/profile/${userFromKnex.id}`);
           } else {
             res.render('login', {

@@ -2,23 +2,25 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const authorized = require('./loginFunctions').authorized;
 
 
-router.get('/', function(req, res, next) {
-  let button = {
-    link: `login`,
-    name: 'Login'
-  };
-  if (req.cookies.token) {
-    let decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET)
-    button = {
-      link: `profile/${decoded.id}`,
-      name: 'My profile'
-    };
-  }
+router.get('/', authorized, (req, res, next) => {
   res.render('index', {
-    button: button
+    button: {
+      link: `profile/${req.locals.user.id}`,
+      name: 'My profile'
+    }
   });
 });
+
+router.get('/', (req, res, next) => {
+  res.render('index', {
+    button: {
+      link: `login`,
+      name: 'Login'
+    }
+  });
+})
 
 module.exports = router;

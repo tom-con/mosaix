@@ -24,7 +24,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', authorized, (req, res, next) => {
-  console.log("at the sprite/:id");
   let id = req.params.id;
   let user = req.locals.user;
   getOneSprite(id)
@@ -38,14 +37,13 @@ router.get('/:id', authorized, (req, res, next) => {
       res.render('sprite', {
         sprite: thisSprite,
         currentUser: user.username,
-        comment: `<form action="/sprite/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
+        comment: `<form action="/comments/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
         tag: tagCreate,
         edit: edit
       });
     })
 })
 router.get('/:id', (req, res, next) => {
-  console.log("tryna get here");
   let id = req.params.id;
   getOneSprite(id)
     .then((thisSprite) => {
@@ -64,31 +62,31 @@ router.get('/:id/like', (req, res, next) => {
   res.redirect(`/sprite/${req.params.id}`);
 })
 
-router.post('/', (req, res, next) => {
-  if (req.cookies.token) {
-    let decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-    let id = decoded.id;
-    if (req.files.picture_url.mimetype === 'image/png') {
-      let picture_url = req.files.picture_url;
-      picture_url.mv(`./public/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`, (writeErr) => {
-        if (writeErr) {
-          return res.status(500).send(err);
-        } else {
-          knex('sprites')
-            .insert({
-              render_url: `http://localhost:3000/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`,
-              user_id: id,
-              name: req.body.name
-            })
-            .then(() => {
-              res.redirect(`/profile/${id}`);
-            })
-        }
-      });
-    }
-  } else {
-    res.status(403).send('Not authorized');
+router.post('/', authorized, (req, res, next) => {
+  let id = req.locals.user.id;
+  if (req.files.picture_url.mimetype === 'image/png') {
+    let picture_url = req.files.picture_url;
+    picture_url.mv(`./public/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`, (writeErr) => {
+      if (writeErr) {
+        return res.status(500).send(err);
+      } else {
+        knex('sprites')
+          .insert({
+            render_url: `http://localhost:3000/images/uploads/sprites/${picture_url.name.replace(/png$/, ".png")}`,
+            user_id: id,
+            name: req.body.name
+          })
+          .then(() => {
+            res.redirect(`/profile/${id}`);
+          })
+      }
+    });
   }
+})
+
+router.post('/', (req, res, next) => {
+  //NEED TO RENDER A NOT LOGGED IN PAGE
+  res.status(403).send('Not authorized');
 })
 
 router.post('/:id/update', (req, res, next) => {
@@ -104,16 +102,6 @@ router.post('/:id/update', (req, res, next) => {
 
 })
 
-router.delete('/:id', (req, res, next) => {
-  knex('comments')
-    .update({
-      archived_comment: true
-    })
-    .where('id', req.body.id)
-    .first()
-    .then(() => {
-      res.status(200).send(true);
-    })
-})
+
 
 module.exports = router;
