@@ -25,32 +25,28 @@ router.get('/:id', authorized, (req, res, next) => {
     .first()
     .then((userFromKnex) => {
       if (userFromKnex) {
-        let data = {
-          user: userFromKnex,
-          sprites: allSprites,
-          log: logout
-        }
-          if (req.locals.user.id === id) {
-            getSpritesByUser(id)
-              .then((allSprites) => {
-                res.render('myProfile', data)
-              })
-          } else {
-            getSpritesByUser(id)
-              .then((allSprites) => {
-                res.render('profile', data)
-              })
-          }
-
-        // else {
-        //   getSpritesByUser(id)
-        //     .then((allSprites) => {
-        //       res.render('profile', data)
-        //     })
-        // }
+        getSpritesByUser(id)
+          .then((allSprites) => {
+            let data = {
+              user: userFromKnex,
+              sprites: allSprites,
+              log: logout
+            }
+            if (req.locals.user.id === id) {
+              res.render('myProfile', data)
+            } else {
+              res.render('profile', data)
+            }
+          })
       } else {
         res.redirect('/')
       }
+    })
+})
+router.get('/:id', (req, res, next) => {
+  getSpritesByUser(req.params.id)
+    .then((allSprites) => {
+      res.render('profile', data)
     })
 })
 
@@ -67,24 +63,21 @@ router.get('/:id/settings', (req, res, next) => {
 })
 
 router.post('/:id/settings/upload', (req, res) => {
-  if(req.files.picture_url.mimetype === 'image/png') {
+  if (req.files.picture_url.mimetype === 'image/png') {
     let picture_url = req.files.picture_url;
     picture_url.mv(`./public/images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`, function(writeErr) {
-    if (writeErr) {
-      return res.status(500).send(err);
-    } else {
-      knex('users')
-        .update('user_picture', `http://localhost:3000/images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`)
-        .where('id', req.params.id)
-        .then(() => {
-          res.redirect(`/profile/${req.params.id}/settings`);
-        })
-    }
-  });
-  } else {
-
+      if (writeErr) {
+        return res.status(500).send(err);
+      } else {
+        knex('users')
+          .update('user_picture', `http://localhost:3000/images/uploads/user_avatars/${picture_url.name.replace(/png$/, ".png")}`)
+          .where('id', req.params.id)
+          .then(() => {
+            res.redirect(`/profile/${req.params.id}/settings`);
+          })
+      }
+    });
   }
-
 })
 
 router.put('/:id/settings', (req, res, next) => {
