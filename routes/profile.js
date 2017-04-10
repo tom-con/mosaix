@@ -25,35 +25,29 @@ router.get('/:id', (req, res, next) => {
     .first()
     .then((userFromKnex) => {
       if (userFromKnex) {
+        let data = {
+          user: userFromKnex,
+          sprites: allSprites,
+          log: logout
+        }
         if (req.cookies.token) {
           let decodedUser = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+
           if (decodedUser.id === id) {
             getSpritesByUser(id)
               .then((allSprites) => {
-                res.render('myProfile', {
-                  user: userFromKnex,
-                  sprites: allSprites,
-                  log: logout
-                })
+                res.render('myProfile', data)
               })
           } else {
             getSpritesByUser(id)
               .then((allSprites) => {
-                res.render('profile', {
-                  user: userFromKnex,
-                  sprites: allSprites,
-                  log: logout
-                })
+                res.render('profile', data)
               })
           }
         } else {
           getSpritesByUser(id)
             .then((allSprites) => {
-              res.render('profile', {
-                user: userFromKnex,
-                sprites: allSprites,
-                log: login
-              })
+              res.render('profile', data)
             })
         }
       } else {

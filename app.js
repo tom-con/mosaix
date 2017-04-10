@@ -16,6 +16,7 @@ const users = require('./routes/users');
 const tags = require('./routes/tags');
 const create = require('./routes/create');
 const comments = require('./routes/comments');
+const followers = require('./routes/followers');
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use('/users', users);
 app.use('/tags', tags);
 app.use('/create', create);
 app.use('/comments', comments);
+app.use('/followers', followers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
