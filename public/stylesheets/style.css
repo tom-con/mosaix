@@ -10,7 +10,8 @@ a {
 body {
   padding: 50px;
   height: 1000px;
-  background-color: black;
+  background-image: url(../images/requires/waterfall.png);
+  background-color: white;
 }
 a:hover {
 	text-decoration:none;
@@ -150,4 +151,41 @@ a:hover {
   text-decoration: none;
 }
 
-/* ============== QUERY STYLING ============== */
+/* ============== QUERY STYLING & SPRITES ============== */
+.query-content {
+  color: white;
+}
+.my-profile-img {
+  width: 125px;
+  border: white 1px solid;
+}
+
+.sidebar-buttom {
+  margin-bottom: 5px;
+  color: white;
+  border-color: red;
+  background-color: transparent;
+}
+.create-now {
+  color: yellow;
+}
+.query-title {
+  color: white;
+  width: 300px;
+}
+.query-images {
+  border: red 1px solid;
+}
+.query-img {
+  width: 200px;
+  height: 200px;
+  margin: 5px 0;
+  text-align: center;
+  border: yellow 1px solid;
+  background-color: transparent;
+}
+.sprite {
+  padding: 10px 15px;
+}
+
+/* ==============  STYLING ============== */
