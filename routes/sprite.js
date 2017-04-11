@@ -21,7 +21,8 @@ router.get('/', (req, res, next) => {
   getAllSprites()
     .then((allSprites) => {
       res.render('sprites', {
-        sprites: allSprites
+        sprites: allSprites,
+        log: login
       })
     })
 });
@@ -42,6 +43,7 @@ router.get('/:id', authorized, (req, res, next) => {
         currentUser: user.username,
         comment: `<form action="/comments/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
         tag: tagCreate,
+        log: logout,
         edit: edit
       });
     })
