@@ -1,12 +1,14 @@
+const jwt = require('jsonwebtoken');
 const express = require('express');
-const router = express.Router();
+const ev = require('express-validation');
+const validations = require('../validations/comments');
 const knex = require('../knex');
 const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
 const getAllSprites = require('./spriteFunctions').getAllSprites;
 const getOneSprite = require('./spriteFunctions').getOneSprite;
 const authorized = require('./loginFunctions').authorized;
-const jwt = require('jsonwebtoken');
 const toggleLike = require('./likeFunctions').toggleLike;
+const router = express.Router();
 
 let login = {
   link: '/login',

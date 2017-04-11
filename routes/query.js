@@ -47,4 +47,8 @@ router.get('/following', (req, res, next) => {
   res.redirect('/');
 })
 
+router.get('/:tag', (req, res, next) => {
+  
+})
+
 module.exports = router;
