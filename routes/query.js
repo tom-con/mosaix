@@ -20,18 +20,8 @@ let logout = {
   text: 'Logout'
 };
 
-router.get('/trending', authorized, (req, res, next) => {
-  getAllSpritesLatest(20)
-  .then((allSprites) => {
-    res.render('sprites', {
-      title: "Trending Sprites",
-      sprites: allSprites,
-      log: logout
-    })
-  })
-});
 
-router.get('/trending', authorized, (req, res, next) => {
+router.get('/trending', (req, res, next) => {
   getAllSpritesLatest(20)
   .then((allSprites) => {
     res.render('sprites', {
@@ -53,7 +43,7 @@ router.get('/following', authorized, (req, res, next) => {
   })
 })
 
-router.get('/following', authorized, (req, res, next) => {
+router.get('/following', (req, res, next) => {
   res.redirect('/');
 })
 
