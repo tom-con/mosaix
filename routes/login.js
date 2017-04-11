@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const makeJWT = require('./loginFunctions').makeJWT;
 
+
 router.get('/', (req, res, next) => {
   res.render('login');
 });

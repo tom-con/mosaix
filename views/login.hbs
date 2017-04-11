@@ -23,9 +23,7 @@
               </div>
             </div>
             <div class="menu">
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="{{log.link}}"><button>{{log.text}}</button></a></li>
-              </ul>
+
             </div>
             <form class="navbar-form navbar-right" role="search">
               <div class="input-group">
@@ -59,7 +57,7 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in user-action" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-              <form class="login-require" action="login" method="post">
+              <form class="login-require" action="/login" method="post">
                   <input type="text" name="username" placeholder="Your username...">
                 <!-- </label> -->
                 <br>
@@ -67,8 +65,8 @@
                 <!-- </label> -->
                 <br>
                 <br>
+                <button type="submit">Login</button>
               </form>
-              <button type="submit">Login</button>
               <h4>{{error}}</h4>
             </div>
           </div>
@@ -92,8 +90,8 @@
                   <input type="password" name="confirmPassword" placeholder="Confirm plassword...">
                 <br>
                 <br>
+                <button type="submit">Sign Up</button>
               </form>
-              <button type="submit">Sign Up</button>
               <h4>{{error2}}</h4>
             </div>
           </div>

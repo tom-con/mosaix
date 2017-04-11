@@ -4,13 +4,22 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authorized = require('./loginFunctions').authorized;
 
+let login = {
+  link: '/login',
+  text: 'Login'
+};
+let logout = {
+  link: '/login/logout',
+  text: 'Logout'
+};
 
 router.get('/', authorized, (req, res, next) => {
   res.render('index', {
     button: {
       link: `profile/${req.locals.user.id}`,
       name: 'My profile'
-    }
+    },
+    log: logout
   });
 });
 
@@ -19,7 +28,8 @@ router.get('/', (req, res, next) => {
     button: {
       link: `login`,
       name: 'Login'
-    }
+    },
+    log: login
   });
 })
 
