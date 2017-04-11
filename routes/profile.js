@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const jwt = require('jsonwebtoken');
-const getSpritesByUser = require('./spriteFunctions.js').getSpritesByUser;
+const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
 const authorized = require('./loginFunctions').authorized;
+const getFollowersCount = require('./userFunctions').getFollowersCount;
+const getIfFollowed = require('./userFunctions').getIfFollowed;
 
 
 let login = {
@@ -19,6 +21,7 @@ router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
 
+
 router.get('/:id', authorized, (req, res, next) => {
   let id = parseInt(req.params.id);
   knex('users')
@@ -31,19 +34,30 @@ router.get('/:id', authorized, (req, res, next) => {
             let data = {
               user: userFromKnex,
               sprites: allSprites,
-              log: logout
+              log: logout,
+              followers: 0
             }
-            if (req.locals.user.id === id) {
-              res.render('myProfile', data)
-            } else {
-              res.render('profile', data)
-            }
+            getFollowersCount(id).then((followers) => {
+              data.followers = followers.count;
+            }).then(() => {
+              return getIfFollowed(req.locals.user.id, id);
+            }).then((isFollowing) => {
+              console.log(isFollowing);
+              data.isFollowing = isFollowing ? "Unfollow" : "Follow +";
+              console.log(data.isFollowing);
+              if (req.locals.user.id === id) {
+                res.render('myProfile', data)
+              } else {
+                res.render('profile', data)
+              }
+            })
           })
       } else {
         res.redirect('/')
       }
     })
 })
+
 router.get('/:id', (req, res, next) => {
   getSpritesByUser(req.params.id)
     .then((allSprites) => {

@@ -11,7 +11,8 @@
     <a href="/"><h1>SPRITR</h1></a>
     <h5>{{user.username}}'s Profile</h5>
     <img width="100px" src="{{user.user_picture}}">
-    <form action="/followers" method="post"><button type="submit" name="id" value="{{user.id}}">{{following}}</button></form>
+    <p>Followers: {{followers}}</p>
+    <form action="/followers" method="post"><button type="submit" name="id" value="{{user.id}}">{{isFollowing}}</button></form>
         <p>{{user.user_summary}}</p>
     {{#each sprites}}
         <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>

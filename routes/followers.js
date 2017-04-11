@@ -4,7 +4,7 @@ const knex = require('../knex');
 const authorized = require('./loginFunctions').authorized;
 
 
-router.get('/', function(req, res, next) {
+router.get('/:id', (req, res, next) => {
 
 });
 
@@ -12,9 +12,17 @@ router.post('/', authorized, (req, res, next) => {
   knex('followers')
     .where('followed', req.body.id)
     .where('follower', req.locals.user.id)
+    .first()
     .then((exists) => {
       if (exists) {
-        res.redirect(`/profile/${req.body.id}`)
+        knex('followers')
+          .where('followed', req.body.id)
+          .where('follower', req.locals.user.id)
+          .first()
+          .del()
+          .then(() => {
+            res.redirect(`/profile/${req.body.id}`);
+          })
       } else {
         knex('followers')
           .insert({
@@ -26,7 +34,6 @@ router.post('/', authorized, (req, res, next) => {
           })
       }
     })
-
 })
 
 router.post('/', (req, res, next) => {
