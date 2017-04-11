@@ -10,8 +10,10 @@ a {
 body {
   padding: 50px;
   height: 1000px;
-  background-image: url(../images/requires/waterfall.png);
-  background-color: white;
+  background: url(../images/requires/waterfall.png) no-repeat fixed;
+  /*background-repeat: no-repeat;*/
+  background-size: cover;
+
 }
 a:hover {
 	text-decoration:none;
@@ -188,4 +190,47 @@ a:hover {
   padding: 10px 15px;
 }
 
-/* ==============  STYLING ============== */
+/* ==============  SPRITE STYLING ============== */
+.sprite-content {
+  color: white;
+}
+.sprite-title {
+  color: white;
+  width: 100%;
+}
+.left-title {
+  text-align: start;
+  width: 100%;
+}
+.right-title {
+  text-align: right;
+}
+.sprite-info {
+  border: red 2px solid;
+}
+.sprite-img {
+  width: 400px;
+  height: 400px;
+  margin: 5px 0;
+  border: yellow 2px solid;
+  background-color: transparent;
+}
+td,
+tr {
+  padding: 10px;
+}
+.comment-section {
+  height: 200px !important;
+  overflow-y: scroll;
+}
+.comment-info {
+  margin-top: 50px;
+}
+.comment-img {
+  width: 100px;
+  height: 100px;
+  border: white 1px solid;
+  padding-right: 5px;
+  background: url(http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg) center center;
+  background-size: cover;
+}
