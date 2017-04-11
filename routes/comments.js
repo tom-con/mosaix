@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const authorized = require('./loginFunctions').authorized;
+const validations = require('../validations/comments');
+const ev = require('express-validation');
 
-
-router.post('/:id', authorized, (req, res, next) => {
+router.post('/:id', ev(validations.post), authorized, (req, res, next) => {
   knex('comments')
     .insert({
       sprite_id: req.params.id,

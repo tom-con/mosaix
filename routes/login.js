@@ -4,6 +4,8 @@ const knex = require('../knex')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const makeJWT = require('./loginFunctions').makeJWT;
+const ev = require('express-validation');
+const validations = require('../validations/users')
 
 
 router.get('/', (req, res, next) => {
@@ -38,7 +40,7 @@ router.post('/', (req, res, next) => {
 
 })
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', ev(validations.post), (req, res, next) => {
   if (req.body.password !== req.body.confirmPassword) {
     res.render('login', {
       error2: 'Passwords do not match'

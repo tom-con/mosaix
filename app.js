@@ -41,6 +41,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload({ safeFileNames: true }));
 
 
+
+
 app.use('/', index);
 app.use('/login', login);
 app.use('/profile', profile);
@@ -56,6 +58,15 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+app.use((err, _req, res, _next) => {
+  if (err.status) {
+    return res.status(err.status).send(err);
+  }
+
+  console.error(err);
+  res.sendStatus(500);
 });
 
 // error handler

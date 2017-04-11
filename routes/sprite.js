@@ -1,12 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const knex = require('../knex');
-const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
-const getAllSprites = require('./spriteFunctions').getAllSprites;
-const getOneSprite = require('./spriteFunctions').getOneSprite;
-const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
+const express = require('express');
+const ev = require('express-validation');
+const validations = require('../validations/sprite');
+const knex = require('../knex');
+const router = express.Router();
+const authorized = require('./loginFunctions').authorized;
 const toggleLike = require('./likeFunctions').toggleLike;
+const {
+  getSpritesByUser,
+  getAllSprites,
+  getOneSprite
+} = require('./spriteFunctions');
 
 let login = {
   link: '/login',
@@ -71,7 +75,7 @@ router.get('/:id/like', (req, res, next) => {
 })
 
 
-router.post('/', authorized, (req, res, next) => {
+router.post('/', ev(validations.post), authorized, (req, res, next) => {
   let id = req.locals.user.id;
   if (req.files.picture_url.mimetype === 'image/png') {
     let picture_url = req.files.picture_url;
