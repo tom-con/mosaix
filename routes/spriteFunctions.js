@@ -108,6 +108,20 @@ let getAllSpritesLatest = (limit) => {
       return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.sprite_id)))
     })
 }
+
+let getSpritesImFollowing = (userId, limit) => {
+  return knex('sprites')
+    .join('followers', 'followers.followed', 'sprites.user_id')
+    .select('sprites.id')
+    .where('followers.follower', userId)
+    .limit(limit)
+    .then(getHighestLiked)
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.sprite_id)))
+    })
+}
+
+module.exports.getSpritesImFollowing = getSpritesImFollowing;
 module.exports.getSpritesByUserLatest = getSpritesByUserLatest;
 module.exports.getSpritesByUser = getSpritesByUser;
 module.exports.getAllSprites = getAllSprites;

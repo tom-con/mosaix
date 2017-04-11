@@ -4,6 +4,7 @@ const getSpritesByUserLatest = require('./spriteFunctions').getSpritesByUserLate
 const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
 const getAllSprites = require('./spriteFunctions').getAllSprites;
 const getAllSpritesLatest = require('./spriteFunctions').getAllSpritesLatest;
+const getSpritesImFollowing = require('./spriteFunctions').getSpritesImFollowing;
 const getOneSprite = require('./spriteFunctions').getOneSprite;
 const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
@@ -19,26 +20,44 @@ let logout = {
   text: 'Logout'
 };
 
-router.get('/trending', (req, res, next) => {
+router.get('/trending', authorized, (req, res, next) => {
   getAllSpritesLatest(20)
   .then((allSprites) => {
-    console.log(allSprites);
+    res.render('sprites', {
+      title: "Trending Sprites",
+      sprites: allSprites,
+      log: logout
+    })
   })
-  res.render('sprites', {
-
-  });
 });
 
-router.get('/:id', (req, res, next) => {
-  console.log("getting by ID", req.params.id);
-  getSpritesByUserLatest(req.params.id, 20)
+router.get('/trending', authorized, (req, res, next) => {
+  getAllSpritesLatest(20)
   .then((allSprites) => {
-    console.log(allSprites);
+    res.render('sprites', {
+      title: "Trending Sprites",
+      sprites: allSprites,
+      log: login
+    })
   })
-  res.render('sprites', {
-
-  });
 });
+
+router.get('/following', authorized, (req, res, next) => {
+  getSpritesImFollowing(req.locals.user.id, 20)
+  .then((allSprites) => {
+    res.render('sprites', {
+      title: "Following",
+      sprites: allSprites,
+      log: login
+    })
+  })
+})
+
+router.get('/following', authorized, (req, res, next) => {
+  res.redirect('/');
+})
+
+
 
 
 module.exports = router;

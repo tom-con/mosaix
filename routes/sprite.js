@@ -21,6 +21,7 @@ router.get('/', (req, res, next) => {
   getAllSprites()
     .then((allSprites) => {
       res.render('sprites', {
+        title: "All Sprites",
         sprites: allSprites,
         log: login
       })
