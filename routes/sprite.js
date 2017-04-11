@@ -8,10 +8,14 @@ const authorized = require('./loginFunctions').authorized;
 const jwt = require('jsonwebtoken');
 const toggleLike = require('./likeFunctions').toggleLike;
 
-
-
-// put '/:id' should update a sprite based on who is logged in and which sprite is selected
-//delete '/:id' should delete(archive) a sprite based on who is logged in and which sprite is selected
+let login = {
+  link: '/login',
+  text: 'Login'
+};
+let logout = {
+  link: '/login/logout',
+  text: 'Logout'
+};
 
 router.get('/', (req, res, next) => {
   getAllSprites()
@@ -53,12 +57,18 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+
+
 router.get('/:id/like', authorized, toggleLike, (req, res, next) => {
   res.redirect(`/sprite/${req.params.id}`);
 })
 
 router.get('/:id/like', (req, res, next) => {
   res.redirect(`/sprite/${req.params.id}`);
+})
+
+router.get('/search/:query', (req, res, next) => {
+  res.render('query', {log: logout});
 })
 
 router.post('/', authorized, (req, res, next) => {
