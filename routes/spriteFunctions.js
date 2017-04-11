@@ -66,6 +66,14 @@ let getSpritesByUser = (userId) => {
       return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
     })
 }
+let getSpritesById = (spriteId) => {
+  return knex('sprites')
+    .select('id')
+    .where('id', spriteId)
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
+    })
+}
 
 let getAllSprites = () => {
   return knex('sprites')
