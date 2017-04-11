@@ -1,8 +1,153 @@
-body {
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+}*/
+
+/* ============== GENERAL STYLING ============== */
+body {
+  padding: 50px;
+  height: 1000px;
+  background-color: black;
 }
+a:hover {
+	text-decoration:none;
+}
+.navigation {
+  background-color: gray;
+}
+.navbar-default {
+	background-color: #fff;
+	border-radius:0;
+	border-right:0;
+	border-left:0;
+	border-top:0;
+}
+.container-fluid.navigation {
+  height: 75px;
+}
+.container-fluid > .navbar-header {
+	/*margin-right: 30px;*/
+	margin-left: 10px;
+	margin-top:20px;
+	border-radius:0;
+  width: 225px
+}
+.navbar-brand {
+  float: left;
+  height: 30px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+.navbar-brand img {
+	float: left;
+	margin-top:-34px;
+  margin-left: -5px;
+  width: 400px;
+}
+.menu {
+	font-size:14px;
+	float:right;
+	text-transform:uppercase;
+	font-weight:600;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.menu ul.nav-tabs li {
+	color:#000;
+}
+.nav-tabs {
+  border-bottom: 0;
+}
+.nav-tabs > li {
+  float: left;
+  margin-bottom: 0;
+}
+.nav-tabs > li > a {
+	line-height: 1.42857143;
+	border-bottom: 3px solid transparent;
+	border-radius:0;
+	color:#000;
+	border-top:0;
+	border-right:0;
+	border-left:0;
+}
+.nav-tabs > li > a:hover {
+  border-color: white white red;
+   color: red;
+  border-radius:0;
+  background-color:white;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: white;
+  cursor: default;
+  background-color: red;
+  border: 0;
+  border-bottom-color: transparent;
+  cursor:pointer;
+}
+.footer-row {
+  margin-top: 90px;
+}
+.copyright {
+  color: white;
+  margin-bottom: 125px;
+}
+.copyright-block {
+  text-align: center;
+}
+
+
+/* ============== SPLASH STYLING ============== */
+/*Carousel Styling*/
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.carousel-img {
+  width: 350px;
+  height: 350px;
+}
+
+/*Instant Create Button*/
+.instant-create {
+  text-align: center;
+}
+/*Features*/
+.features {
+  color: white;
+  width: 525px;
+  margin: auto;
+  padding: 5px;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.splash-span {
+  color: red;
+}
+
+/* ============== LOGIN STYLING ============== */
+.log-block,
+.login-require,
+.signup-require {
+  text-align: center;
+}
+.panel-title > a {
+  text-decoration: none;
+}
+
+/* ============== QUERY STYLING ============== */

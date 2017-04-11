@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,6 +6,173 @@
   </head>
   <body>
             <a href="{{log.link}}">{{log.text}}</a>
-
   </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>spritr</h1>
+  <p>Login</p>
+  <form action="login" method="post">
+  <label>Username: <input type="text" name="username"></label><br>
+  <label>Password: <input type="password" name="password"></label><br>
+  <button type="submit">Login</button>
+  </form>
+  <h4>{{error}}</h4>
+  <p>Or sign in</p>
+  <form action="login/signup" method="post">
+  <label>Email: <input type="text" name="email"></label><br>
+  <label>Username: <input type="text" name="username"></label><br>
+  <label>Password: <input type="password" name="password"></label><br>
+  <label>Confirm Password: <input type="password" name="confirmPassword"></label><br>
+  <button type="submit">Sign Up</button>
+  </form>
+  <h4>{{error2}}</h4>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- BOOTSTRAP Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- MY Styling CSS -->
+  <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <!-- Navigation - START -->
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid navigation">
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="index.html"><img src="./images/requires/MozaixLogo.png" class="logo" alt="MozaiX"></a>
+              </div>
+            </div>
+            <div class="menu">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="{{button.link}}"><button>{{button.name}}</button></a></li>
+              </ul>
+            </div>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search this site">
+                <span class="input-group-btn">
+      <button type="submit" class="btn btn-default search-button">
+      <span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- Navigation - END -->
+  </header>
+
+  <hr>
+
+  <!-- Collapsible - START -->
+  <div class="container">
+    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 log-block">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!-- SIGN IN -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Login</a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in user-action" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <form class="login-require" action="login" method="post">
+                <label>Username: <input type="text" name="username"></label>
+                <br>
+                <label>Password: <input type="password" name="password"></label>
+                <br>
+                <br>
+              </form>
+              <button type="submit">Login</button>
+              <h4>{{error}}</h4>
+            </div>
+          </div>
+        </div>
+        <!-- MAKE USER -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Sign Up</a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse user-action" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <form  class="signup-require" action="login/signup" method="post">
+                <label>Email: <input type="text" name="email"></label>
+                <br>
+                <label>Username: <input type="text" name="username"></label>
+                <br>
+                <label>Password: <input type="password" name="password"></label>
+                <br>
+                <label>Confirm Password: <input type="password" name="confirmPassword"></label>
+                <br>
+                <br>
+              </form>
+              <button type="submit">Sign Up</button>
+              <h4>{{error2}}</h4>
+            </div>
+          </div>
+        </div>
+        <!-- CREATE ANONYMOUS -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">CREATE Anonymouily</a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse user-action" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+              <button type="submit">JUST DO IT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Collapsible - END -->
+
+  <!-- Footer - START -->
+  <div class="container footer">
+    <div class="row footer-row">
+      <div class="card">
+        <div class="card-block">
+          <p class="copyright-block"><span class="copyright">&copy; MosaiX All right reserved.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer - END -->
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- BOOTSTRAP Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+<!-- MY Javascripting -->
+<!-- <script src="./javascripts/query.js"></script> -->
+
 </html>
