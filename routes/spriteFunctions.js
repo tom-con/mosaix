@@ -13,7 +13,7 @@ let addCommentsToSprite = (spriteId) => {
     .where('comments.archived_comment', false)
     .select('users.username as author', 'comments.created_at as created_at', 'comments.edited as edited', 'comments.content as content', 'comments.id as comment_id')
     .leftOuterJoin('users', 'users.id', 'comments.author_id')
-    .orderBy('comments.created_at', 'DESC')
+    .orderBy('comments.created_at', 'ASC')
 }
 
 let addLikesToSprite = (spriteId) => {
@@ -50,6 +50,7 @@ let getSpriteWithUserCommentsLikes = (spriteId) => {
 
 let getOneSprite = (spriteId) => {
   return knex('sprites')
+    .select('*')
     .where('sprites.id', spriteId)
     .first()
     .then((spriteFromKnex) => {
@@ -75,6 +76,40 @@ let getAllSprites = () => {
     })
 }
 
+let getHighestLiked = (spriteIds) => {
+  return knex('sprites')
+    .select('likes.sprite_id')
+    .join('likes', 'sprites.id', 'likes.sprite_id')
+    .count('*')
+    .whereIn('likes.sprite_id', spriteIds.map(el => el.id))
+    .groupBy('likes.sprite_id')
+    .orderBy('count', 'DESC')
+}
+
+let getSpritesByUserLatest = (userId, limit) => {
+  return knex('sprites')
+    .select('id')
+    .where('user_id', userId)
+    .orderBy('created_at', 'DESC')
+    .limit(limit)
+    .then(getHighestLiked)
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.sprite_id)))
+    })
+}
+
+let getAllSpritesLatest = (limit) => {
+  return knex('sprites')
+    .select('id')
+    .orderBy('created_at', 'DESC')
+    .limit(limit)
+    .then(getHighestLiked)
+    .then((spriteIds) => {
+      return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.sprite_id)))
+    })
+}
+module.exports.getSpritesByUserLatest = getSpritesByUserLatest;
 module.exports.getSpritesByUser = getSpritesByUser;
 module.exports.getAllSprites = getAllSprites;
+module.exports.getAllSpritesLatest = getAllSpritesLatest;
 module.exports.getOneSprite = getOneSprite;

@@ -69,9 +69,6 @@ router.get('/:id/like', (req, res, next) => {
   res.redirect(`/sprite/${req.params.id}`);
 })
 
-router.get('/search/:query', (req, res, next) => {
-  res.render('query', {log: logout});
-})
 
 router.post('/', authorized, (req, res, next) => {
   let id = req.locals.user.id;
