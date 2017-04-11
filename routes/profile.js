@@ -42,9 +42,7 @@ router.get('/:id', authorized, (req, res, next) => {
             }).then(() => {
               return getIfFollowed(req.locals.user.id, id);
             }).then((isFollowing) => {
-              console.log(isFollowing);
-              data.isFollowing = isFollowing ? "Unfollow" : "Follow +";
-              console.log(data.isFollowing);
+              data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
               if (req.locals.user.id === id) {
                 res.render('myProfile', data)
               } else {
@@ -59,9 +57,27 @@ router.get('/:id', authorized, (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  getSpritesByUser(req.params.id)
-    .then((allSprites) => {
-      res.render('profile', data)
+  let id = parseInt(req.params.id);
+  knex('users')
+    .where('id', id)
+    .first()
+    .then((userFromKnex) => {
+      if (userFromKnex) {
+        getSpritesByUser(req.params.id)
+          .then((allSprites) => {
+            let data = {
+              user: userFromKnex,
+              sprites: allSprites,
+              log: logout,
+              followers: 0
+            }
+            getFollowersCount(id).then((followers) => {
+              data.followers = followers.count;
+            }).then(() => {
+              res.render('profile', data)
+            })
+          })
+      }
     })
 })
 

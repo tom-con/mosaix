@@ -13,7 +13,6 @@ let getIfFollowed = (follower, followed) => {
     .where('followed', followed)
     .first()
     .then((exists) => {
-      console.log(exists);
       if (exists) {
         return true;
       } else {
