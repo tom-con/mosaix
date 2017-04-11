@@ -49,26 +49,6 @@ router.get('/following', (req, res, next) => {
   res.redirect('/');
 })
 
-// router.get('/:tag', (req, res, next) => {
-//   knex('tags')
-//     .where('name', req.params.tag)
-//     .first()
-//     .then((tag) => {
-//       knex('sprites')
-//         .select('sprites.id')
-//         .join('tags', 'tags.sprite_id', 'sprites.id')
-//         .where('tags.name', tag)
-//         .then(getSpritesById)
-//         .then((allSprites) => {
-//           console.log(allSprites);
-//           res.render('sprites', {
-//             title: `Search results for: '${tag}'`,
-//             sprites: allSprites,
-//             log: login
-//           })
-//         })
-//     })
-// })
 
 router.get('/:tag', (req, res, next) => {
   knex('sprites')

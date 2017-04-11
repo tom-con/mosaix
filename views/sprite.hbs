@@ -1,41 +1,14 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../javascripts/sprite.js">
-    </script>
-    <title>All Sprites</title>
-</head>
 
 <body>
-          <a href="{{log.link}}">{{log.text}}</a>
   <p class="currentUser" data-name="{{currentUser}}"> Logged in as {{currentUser}}</p>
     <a href="/sprite/{{sprite.id}}"><h4>{{sprite.name}}</h4></a>
-    <div id="editBox">
-    {{{edit}}}
-  </div>
-    <a href="/profile/{{sprite.user_id}}"><h5>by {{sprite.username}}</h5></a>
-    <img id="theSprite" width="200px" src="{{sprite.render_url}}" data-id="{{sprite.id}}">
-    <h5> Tags: </h5>
-    {{#each sprite.tags}}
-        <p>{{this.tagname}} <a class="removeTag" data-id="{{this.linkId}}">X</a></p>
-    {{/each}}
-    {{{tag}}}
-    <a href="/sprite/{{sprite.id}}/like"><p>Likes: {{sprite.likes}}</p></a>
-    <h3>Comments:</h3>
-    {{#each sprite.comments}}
-        <div id="{{this.comment_id}}" class="{{this.author}}" data-id="{{this.comment_id}}">
-            <h5>{{this.author}}</h5>
-            <p>{{this.content}}</p>
-        </div>
-    {{/each}}
-    {{error}} {{{comment}}}
+
+
+
+
 
 </body>
 
-</html> -->
 
 <!-- http://localhost:3000/sprite/1 -->
 
@@ -91,7 +64,7 @@
     <!-- Sidebar - START -->
     <div class="col-md-2">
       <div class="my-profile-info">
-        <h3>AutherName</h3>
+          <a href="/profile/{{sprite.user_id}}"><h3>{{sprite.username}}</h3></a>
         <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
       </div>
     </div>
@@ -99,27 +72,25 @@
     <!-- Individual Sprite Content - START -->
     <div class="row col-md-10">
       <div class="col-md-10 sprite-title">
-        <h1 class="left-title">SpriteName <span class="right-title pull-right">AutherName</span></h1>
+        <h1 class="left-title">{{sprite.name}}    <div id="editBox">
+            {{{edit}}}
+          </div> <a href="/profile/{{sprite.user_id}}"><span class="right-title pull-right">by {{sprite.username}}</span></a></h1>
+
       </div>
       <br>
     </div>
     <div class="row col-md-10 sprite-info">
         <div class="col-sm-6 col-md-6 col-md-offset-3 sprite">
             <div class="card">
-                <img class="img-fluid sprite-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+                <img id="theSprite" class="img-fluid sprite-img img-thumbnail" src="{{sprite.render_url}}" data-id="{{sprite.id}}" alt="Card image cap">
+
             </div>
             <div class="sprite-state">
-              <p>heart: </p>
-              <a href="#">1 lalala</a>
-              <a href="#">2 lalala</a>
-              <a href="#">3 lalala</a>
-              <a href="#">4 lalala</a>
-              <a href="#">5 lalala</a>
-              <a href="#">6 lalala</a>
-              <a href="#">7 lalala</a>
-              <a href="#">8 lalala</a>
-              <a href="#">9 lalala</a>
-              <a href="#">10 lalala</a>
+              <p>heart: <a href="/sprite/{{sprite.id}}/like">{{sprite.likes}}</p></a>
+              {{#each sprite.tags}}
+                  <a href="/query/{{this.tagname}}">{{this.tagname}}</a> <span class="removeTag" data-id="{{this.linkId}}">X</span>
+              {{/each}}
+              {{{tag}}}
             </div>
         </div>
         <div class="col-sm-6 col-md-8 col-md-offset-2">
@@ -141,39 +112,15 @@
       <div class="comment-section">
         <table>
           <tbody>
+            {{#each sprite.comments}}
             <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg">{{this.author}}</a></td>
+              <div id="{{this.comment_id}}" class="{{this.author}}" data-id="{{this.comment_id}}">
+              <td class="comment-text">{{this.content}}</td>
+              </div>
             </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-            <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg"></a></td>
-              <td class="comment-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-
+            {{/each}}
+            {{error}} {{{comment}}}
           </tbody>
         </table>
       </div>
