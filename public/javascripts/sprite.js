@@ -25,7 +25,7 @@ $().ready(() => {
     let linkId = $(event.target).attr('data-id');
     $.ajax({
       method: "DELETE",
-      url: `/tags/remove`,
+      url: `/tags`,
       data: {id: linkId},
       success: (result) => {
         if(result){

@@ -44,15 +44,26 @@ router.post('/:id', authorized, (req, res, next) => {
 router.post('/:id', (req, res, next) => {
 })
 
-router.delete('/remove', authorized, (req, res, next) => {
+router.delete('/', authorized, (req, res, next) => {
   let id = req.body.id;
   knex('sprites_tags')
-    .where('id', id)
+    .select('*')
+    .join('sprites', 'sprites.user_id', 'sprites_tags.sprite_id')
+    .where('sprites_tags.id', id)
     .first()
-    .del()
-    .then(() => {
-      res.status(200).send(true);
+    .then((sprite_tag) => {
+      if(sprite_tag.user_id === req.locals.user.id){
+        knex('sprites_tags')
+          .where('id', id)
+          .first()
+          .del()
+          .then(() => {
+            res.status(200).send(true);
+          })
+      }
     })
 })
+
+router.delete('/')
 
 module.exports = router;
