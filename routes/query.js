@@ -57,7 +57,4 @@ router.get('/following', authorized, (req, res, next) => {
   res.redirect('/');
 })
 
-
-
-
 module.exports = router;
