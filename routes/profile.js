@@ -44,20 +44,20 @@ router.get('/:id', authorized, (req, res, next) => {
                 .then((followedSprites) => {
                   data.follSprites = followedSprites
                   getAllSpritesLatest(4).then((latestSprites) => {
-                    // console.log(latestSprites);
                     data.trending = latestSprites;
+                    getFollowersCount(id)
+                      .then((followers) => {
+                        data.followers = followers.count;
+                      })
+                      .then(() => {
+                        return getIfFollowed(req.locals.user.id, id);
+                      })
+                      .then((isFollowing) => {
+                        data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
+                        res.render('myProfile', data)
+                      })
                   })
-                  getFollowersCount(id)
-                    .then((followers) => {
-                      data.followers = followers.count;
-                    })
-                    .then(() => {
-                      return getIfFollowed(req.locals.user.id, id);
-                    })
-                    .then((isFollowing) => {
-                      data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
-                      res.render('myProfile', data)
-                    })
+
                 })
             })
         } else {

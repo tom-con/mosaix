@@ -1,16 +1,6 @@
-<body>
-    <p>{{user.user_summary}}</p>
 
-    <button><a href="/sprite">News Feed</a></button><br>
-    <button>Trending</button>
     <a href="/profile/{{user.id}}/settings" <button>Settings</button>
-    {{#each follSprites}}
-      <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
-    <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
-    <img width="200px" src="{{this.render_url}}">
-    <p>Likes: {{this.likes}}</p>
-    {{/each}}
-</body>
+
 
 
 <!DOCTYPE html>
@@ -73,15 +63,14 @@
             <p>Followers: {{followers}}</p>
             <button class="sidebar-buttom create-now"><a href="/piskel.html">Create</a></button>
             <br>
-            <button class="sidebar-buttom">My Profile</button>
+            <button class="sidebar-buttom">My Creations</button>
             <br>
-            <button class="sidebar-buttom">My Collection</button>
+            <button class="sidebar-buttom"><a href="/query/following">News Feed</a></button>
             <br>
-            <button class="sidebar-buttom">My News Feed</button>
+            <button class="sidebar-buttom"><a href="/query/trending">Trending</a></button>
             <br>
-            <button class="sidebar-buttom">Trending Now</button>
-            <br>
-            <button class="sidebar-buttom">All Sprites</button>
+            <button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button>
+
         </div>
         <!-- Sidebar - END -->
         <!-- My Sprites - START -->
