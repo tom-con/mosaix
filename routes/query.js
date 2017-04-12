@@ -84,7 +84,7 @@ router.get('/creations', authorized, (req, res, next) => {
         <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
         myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
         sprites: allSprites,
-        log: login,
+        log: logout,
         user: req.locals.user,
         myCreaText: 'My Creations',
         myCreaLink: `/query/creations`
