@@ -62,6 +62,7 @@ let getSpritesByUser = (userId) => {
   return knex('sprites')
     .select('id')
     .where('user_id', userId)
+    .orderBy('updated_at', 'DESC')
     .then((spriteIds) => {
       return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
     })
