@@ -1,8 +1,3 @@
-
-    <a href="/profile/{{user.id}}/settings" <button>Settings</button>
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +10,6 @@
     <!-- MY Styling CSS -->
     <link rel="stylesheet" href="../../stylesheets/style.css">
 </head>
-
 <body>
     <header>
       <!-- Navigation - START -->
@@ -48,35 +42,7 @@
           </nav>
         </div>
       </div>
-      <!-- Navigation - START -->
-            <div class="container navigation-block">
-              <div class="row">
-                <nav class="navbar navbar-default" role="navigation">
-                  <div class="container-fluid navigation">
-                    <div class="navbar-header">
-                      <div class="navbar-brand">
-                        <a href="/"><img src="/images/requires/mainLogo.png" class="logo" alt="MozaiX"></a>
-                      </div>
-                    </div>
-                    <div class="menu">
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation"><a href="{{log.link}}"><button>{{log.text}}</button></a></li>
-                      </ul>
-                    </div>
-                    <form class="navbar-form navbar-right searchbox" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search this site">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default search-button">
-                                <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                  </div>
-                </nav>
-              </div>
-            </div>
+
             <!-- Navigation - END -->
     </header>
 
@@ -107,6 +73,9 @@
             </tr>
             <tr>
               <td><button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button></td>
+            </tr>
+            <tr>
+                  <td><button class="sidebar-buttom"><a href="/profile/{{user.id}}/settings">Settings</a></button></td>
             </tr>
             </table>
 
