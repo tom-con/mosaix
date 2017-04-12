@@ -23,6 +23,7 @@ hr {
 a,
 a:hover {
 	text-decoration:none;
+  color: gold;
 }
 .navigation-block {
   padding: 0;
