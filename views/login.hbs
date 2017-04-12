@@ -15,7 +15,24 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <!-- BOOTSTRAP Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
 
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+          $.ajax({
+            
+          })
+        });
+    }
+    </script>
 </head>
 
 <body>
@@ -81,6 +98,7 @@
                                 <br>
                                 <br>
                                 <div id="googleSign"class="g-signin2" data-onsuccess="onSignIn"></div>
+                                <a href="#" onclick="signOut();">Sign out</a>
                             </form>
 
                             <h4>{{error}}</h4>
@@ -144,7 +162,4 @@
 
 
 </body>
-<!-- MY Javascripting -->
-<!-- <script src="./javascripts/login.js"></script> -->
-
 </html>
