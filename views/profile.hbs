@@ -1,36 +1,9 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>{{user.username}}'s Profile</title>
-</head>
-
-<body>
-    <a href="{{log.link}}">{{log.text}}</a>
-    <a href="/"><h1>SPRITR</h1></a>
-    <h5>{{user.username}}'s Profile</h5>
-    <img width="100px" src="{{user.user_picture}}">
-    <p>Followers: {{followers}}</p>
-    {{{isFollowing}}}
-        <p>{{user.user_summary}}</p>
-    {{#each sprites}}
-        <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
-        <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
-        <img width="200px" src="{{this.render_url}}">
-        <p>Likes: {{this.likes}}</p>
-    {{/each}}
-</body>
-
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+    <title>{{user.username}}'s Profile</title>
   <!-- BOOTSTRAP Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
@@ -79,13 +52,16 @@
     <!-- Sidebar - START -->
     <div class="col-md-2 sidebar-buttoms">
       <div class="my-profile-info">
-        <h3>UserName</h3>
-        <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
+        <h3>{{user.username}}</h3>
+        <img src="{{user.user_picture}}" class="my-profile-img" alt="UserName">
+        <p>Followers: {{followers}}</p>
+        <p>{{user.user_summary}}</p>
       </div>
       <br><br>
       <table class=buttons>
       <tr>
-        <td><button class="sidebar-buttom">Follow</button></td>
+
+        <td>{{{isFollowing}}}</td>
       </tr>
       </table>
     </div>
@@ -94,71 +70,21 @@
     <!-- AuthorName Creation -->
     <div class="row col-md-10">
       <div class="col-md-2 col-md-offset-9 query-title">
-        <h1>AuthorName Creation</h1>
+        <h1>{{user.username}}'s Creations</h1>
       </div>
       <br>
     </div>
     <div class="row col-md-10 other-prrofile-query-img query-images">
+
+      {{#each sprites}}
         <div class="col-sm-4 col-md-3 sprite">
             <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+              <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
+                <img class="img-fluid query-img img-thumbnail" src="{{this.render_url}}" alt="Card image cap">
+                <p>Likes: {{this.likes}}</p>
             </div>
         </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
+        {{/each}}
     </div>
   </div>
   <!-- Content - START -->

@@ -1,19 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>All Sprites</title>
-  </head>
-  <body>
-            <a href="{{log.link}}">{{log.text}}</a>
-    {{#each sprites}}
-      <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
-      <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
-      <img width="200px" src="{{this.render_url}}">
-      <p>Likes: {{this.likes}}</p>
-    {{/each}}
-  </body>
-</html> -->
 
 <!-- http://localhost:3000/sprite/ -->
 
@@ -21,171 +5,119 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <!-- BOOTSTRAP Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <!-- MY Styling CSS -->
-  <link rel="stylesheet" href="../../stylesheets/style.css">
+    <meta charset="utf-8">
+    <title></title>
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <!-- MY Styling CSS -->
+    <link rel="stylesheet" href="../../stylesheets/style.css">
 </head>
 
 <body>
-  <header>
-    <!-- Navigation - START -->
-    <div class="container">
-      <div class="row">
-        <nav class="navbar navbar-default" role="navigation">
-          <div class="container-fluid navigation">
-            <div class="navbar-header">
-              <div class="navbar-brand">
-                <a href="/"><img src="../../images/requires/mainLogo.png" class="logo" alt="MozaiX"></a>
-              </div>
-            </div>
-            <div class="menu">
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="{{log.link}}"><button>{{log.text}}</button></a></li>
-              </ul>
-            </div>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search this site">
-                    <span class="input-group-btn">
+    <header>
+        <!-- Navigation - START -->
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid navigation">
+                        <div class="navbar-header">
+                            <div class="navbar-brand">
+                                <a href="/"><img src="../../images/requires/mainLogo.png" class="logo" alt="MozaiX"></a>
+                            </div>
+                        </div>
+                        <div class="menu">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation"><a href="{{log.link}}"><button>{{log.text}}</button></a></li>
+                            </ul>
+                        </div>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search this site">
+                                <span class="input-group-btn">
                         <button type="submit" class="btn btn-default search-button">
                         <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                                </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navigation - END -->
+    </header>
+
+    <hr>
+
+    <div class="container query-content">
+        <!-- Sidebar - START -->
+        <div class="col-md-2 sidebar-buttoms">
+            <div class="my-profile-info">
+                <h3>UserName</h3>
+                <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
+            </div>
+            <br><br>
+            <table class=buttons>
+                <tr>
+                    <td><button class="sidebar-buttom create-now">Create</button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom">My Profile</button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom">My Collection</button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom">News Feed</button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom">Trending</button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom">All Sprites</button></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Sidebar - END -->
+        <!-- Query Content - START -->
+        <div class="row col-md-10">
+            <div class="col-md-2 col-md-offset-9 query-title">
+                <h1>My Creation</h1>
+            </div>
+            <br>
+        </div>
+        <div class="row col-md-10 query-images transparent">
+            {{#each sprites}}
+                <div class="col-sm-4 col-md-3 sprite">
+                    <div class="card">
+                        <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
+                        <a href="/profile/{{this.user_id}}"><h5>by {{this.username}}</h5></a>
+                        <img class="img-fluid query-img img-thumbnail" src="{{this.render_url}}" alt="Card image cap">
+                        <p>Likes: {{this.likes}}</p>
+                    </div>
                 </div>
-            </form>
-          </div>
-        </nav>
-      </div>
+            {{/each}}
+        </div>
+        <!-- Query Content - END -->
     </div>
-    <!-- Navigation - END -->
-  </header>
 
-  <hr>
+    <!-- Footer - START -->
+    <div class="container footer col-md-12">
+        <div class="row footer-row">
+            <div class="card">
+                <div class="card-block">
+                    <p class="copyright-block"><span class="copyright">&copy; MosaiX All right reserved.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer - END -->
 
-  <div class="container query-content">
-    <!-- Sidebar - START -->
-    <div class="col-md-2 sidebar-buttoms">
-      <div class="my-profile-info">
-        <h3>UserName</h3>
-        <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
-      </div>
-      <br><br>
-      <table class=buttons>
-      <tr>
-        <td><button class="sidebar-buttom create-now">Create</button></td>
-      </tr>
-      <tr>
-        <td><button class="sidebar-buttom">My Profile</button></td>
-      </tr>
-      <tr>
-        <td><button class="sidebar-buttom">My Collection</button></td>
-      </tr>
-      <tr>
-        <td><button class="sidebar-buttom">News Feed</button></td>
-      </tr>
-      <tr>
-        <td><button class="sidebar-buttom">Trending</button></td>
-      </tr>
-      <tr>
-        <td><button class="sidebar-buttom">All Sprites</button></td>
-      </tr>
-      </table>
-    </div>
-    <!-- Sidebar - END -->
-    <!-- Query Content - START -->
-    <div class="row col-md-10">
-      <div class="col-md-2 col-md-offset-9 query-title">
-        <h1>My Creation</h1>
-      </div>
-      <br>
-    </div>
-    <div class="row col-md-10 query-images transparent">
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3 sprite">
-            <div class="card">
-                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
-            </div>
-        </div>
-    </div>
-    <!-- Query Content - END -->
-  </div>
-
-  <!-- Footer - START -->
-  <div class="container footer col-md-12">
-    <div class="row footer-row">
-      <div class="card">
-        <div class="card-block">
-          <p class="copyright-block"><span class="copyright">&copy; MosaiX All right reserved.</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Footer - END -->
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<!-- BOOTSTRAP Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 <!-- MY Javascripting -->
 <!-- <script src="./javascripts/sprites.js"></script> -->

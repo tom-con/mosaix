@@ -89,7 +89,7 @@ router.get('/:id', authorized, (req, res, next) => {
             }).then(() => {
               return getIfFollowed(req.locals.user.id, id);
             }).then((isFollowing) => {
-              data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
+              data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" class="sidebar-buttom" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button class="sidebar-buttom"type="submit" name="id" value="${id}">Follow +</button></form>`;
               res.render('profile', data)
             })
           })
