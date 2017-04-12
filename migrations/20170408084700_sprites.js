@@ -3,7 +3,7 @@ exports.up = function(knex) {
     tbl.increments();
     tbl.string('name', 64).unique().notNullable();
     tbl.integer('user_id').notNullable().references('users.id').onDelete('CASCADE');
-    tbl.string('render_url').notNullable();
+    tbl.text('render_url').notNullable();
     tbl.text('raw').defaultTo('{}');
     tbl.boolean('archived_sprite').defaultTo(false);
     tbl.timestamps(true, true);

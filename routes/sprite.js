@@ -32,6 +32,15 @@ router.get('/', (req, res, next) => {
     })
 });
 
+router.get('/piskel', (req, res, next) => {
+  let sprite = JSON.parse(req.query.serial).piskel;
+  knex('sprites')
+    .insert({name:sprite.name, user_id: 6, render_url: (JSON.parse(sprite.layers[0]).chunks[0].base64PNG)})
+    .then(() => {
+      res.status(200).send(true);
+    })
+})
+
 router.get('/:id', authorized, (req, res, next) => {
   let id = req.params.id;
   let user = req.locals.user;
@@ -73,7 +82,6 @@ router.get('/:id/like', authorized, toggleLike, (req, res, next) => {
 router.get('/:id/like', (req, res, next) => {
   res.redirect(`/sprite/${req.params.id}`);
 })
-
 
 router.post('/', ev(validations.post), authorized, (req, res, next) => {
   let id = req.locals.user.id;
