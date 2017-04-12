@@ -122,9 +122,15 @@ let getSpritesImFollowing = (userId, limit) => {
     })
 }
 
+let getSpritesBySpriteIds = (spriteIds) => {
+  console.log(spriteIds);
+  return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
+}
+
 module.exports.getSpritesImFollowing = getSpritesImFollowing;
 module.exports.getSpritesByUserLatest = getSpritesByUserLatest;
 module.exports.getSpritesByUser = getSpritesByUser;
+module.exports.getSpritesBySpriteIds = getSpritesBySpriteIds;
 module.exports.getAllSprites = getAllSprites;
 module.exports.getAllSpritesLatest = getAllSpritesLatest;
 module.exports.getOneSprite = getOneSprite;

@@ -51,6 +51,10 @@ router.get('/piskel', authorized, (req, res, next) => {
     })
 })
 
+router.get('/piskel', (req,res,next) => {
+  console.log('NEED ERROR HANDLING FOR CREATION WITHOUT AUTH');
+})
+
 router.get('/:id', authorized, (req, res, next) => {
   let id = req.params.id;
   let user = req.locals.user;
