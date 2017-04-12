@@ -83,8 +83,8 @@ let getHighestLiked = (spriteIds) => {
     .join('likes', 'sprites.id', 'likes.sprite_id')
     .count('*')
     .whereIn('likes.sprite_id', spriteIds.map(el => el.id))
-    .groupBy('likes.sprite_id')
-    .orderBy('count', 'DESC')
+    .groupBy('likes.sprite_id', 'sprites.created_at')
+    .orderBy('sprites.created_at', 'DESC')
 }
 
 let getSpritesByUserLatest = (userId, limit) => {

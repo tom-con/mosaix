@@ -8,6 +8,7 @@ exports.seed = function(knex, Promise) {
             id: 1,
             name: "Goth Bob",
             user_id: 10,
+            description: 'Cool image I mage while dying last week lmao.',
             render_url: 'http://orig01.deviantart.net/fb37/f/2016/340/b/f/doodlebob_sprite_by_theblazepage-dajjcj3.png',
             archived_sprite: false
           },

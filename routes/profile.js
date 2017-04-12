@@ -6,6 +6,9 @@ const getSpritesByUser = require('./spriteFunctions').getSpritesByUser;
 const authorized = require('./loginFunctions').authorized;
 const getFollowersCount = require('./userFunctions').getFollowersCount;
 const getIfFollowed = require('./userFunctions').getIfFollowed;
+const getSpritesByUserLatest = require('./spriteFunctions').getSpritesByUserLatest;
+const getSpritesImFollowing = require('./spriteFunctions').getSpritesImFollowing;
+const getAllSpritesLatest = require('./spriteFunctions').getAllSpritesLatest;
 
 
 let login = {
@@ -21,6 +24,50 @@ router.get('/', (req, res, next) => {
   res.redirect('/index');
 });
 
+router.get('/:id', authorized, (req, res, next) => {
+  let id = parseInt(req.params.id);
+  if (req.locals.user.id === id) {
+    knex('users')
+      .where('id', id)
+      .first()
+      .then((userFromKnex) => {
+        if (userFromKnex) {
+          let data = {
+            user: userFromKnex,
+            log: logout,
+            followers: 0
+          }
+          getSpritesByUserLatest(id, 4)
+            .then((allSprites) => {
+              data.mySprites = allSprites;
+              getSpritesImFollowing(id, 4)
+                .then((followedSprites) => {
+                  data.follSprites = followedSprites
+                  getAllSpritesLatest(4).then((latestSprites) => {
+                    // console.log(latestSprites);
+                    data.trending = latestSprites;
+                  })
+                  getFollowersCount(id)
+                    .then((followers) => {
+                      data.followers = followers.count;
+                    })
+                    .then(() => {
+                      return getIfFollowed(req.locals.user.id, id);
+                    })
+                    .then((isFollowing) => {
+                      data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
+                      res.render('myProfile', data)
+                    })
+                })
+            })
+        } else {
+          res.redirect('/')
+        }
+      })
+  } else {
+    next();
+  }
+})
 
 router.get('/:id', authorized, (req, res, next) => {
   let id = parseInt(req.params.id);
@@ -43,11 +90,7 @@ router.get('/:id', authorized, (req, res, next) => {
               return getIfFollowed(req.locals.user.id, id);
             }).then((isFollowing) => {
               data.isFollowing = isFollowing ? `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Unfollow</button></form>` : `<form action="/followers" method="post"><button type="submit" name="id" value="${id}">Follow +</button></form>`;
-              if (req.locals.user.id === id) {
-                res.render('myProfile', data)
-              } else {
-                res.render('profile', data)
-              }
+              res.render('profile', data)
             })
           })
       } else {
@@ -55,6 +98,7 @@ router.get('/:id', authorized, (req, res, next) => {
       }
     })
 })
+
 
 router.get('/:id', (req, res, next) => {
   let id = parseInt(req.params.id);

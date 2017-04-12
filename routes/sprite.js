@@ -32,12 +32,22 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/piskel', (req, res, next) => {
+router.get('/piskel', authorized, (req, res, next) => {
   let sprite = JSON.parse(req.query.serial).piskel;
   knex('sprites')
-    .insert({name:sprite.name, user_id: 6, render_url: (JSON.parse(sprite.layers[0]).chunks[0].base64PNG)})
-    .then(() => {
-      res.status(200).send(true);
+    .returning(['id', 'name', 'user_id', 'render_url'])
+    .insert({
+      name: sprite.name,
+      user_id: req.locals.user.id,
+      render_url: JSON.parse(sprite.layers[0]).chunks[0].base64PNG
+    })
+    .then((sprite) => {
+      let likedSprite = sprite[0];
+      knex('likes')
+        .insert({author_id: req.locals.user.id, sprite_id: likedSprite.id, isLiked: false})
+        .then(() => {
+          res.status(200).send(true);
+        })
     })
 })
 
