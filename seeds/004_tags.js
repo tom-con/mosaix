@@ -5,43 +5,103 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('tags').insert([{
           id: 1,
-          name: 'armor'
+          name: 'brown'
         },
         {
           id: 2,
-          name: 'dragon'
+          name: 'blue'
         },
         {
           id: 3,
-          name: 'kawaii'
+          name: 'gold'
         },
         {
           id: 4,
-          name: 'magic'
+          name: 'green'
         },
         {
           id: 5,
-          name: 'warrior'
+          name: 'purple'
         },
         {
           id: 6,
-          name: 'weapon'
+          name: 'pink'
         },
         {
           id: 7,
-          name: 'goblin'
+          name: 'oarnge'
         },
         {
           id: 8,
-          name: 'mech'
+          name: 'black'
         },
         {
           id: 9,
-          name: 'soldier'
+          name: 'white'
         },
         {
           id: 10,
-          name: 'mage'
+          name: 'red'
+        },
+        {
+          id: 11,
+          name: 'teal'
+        },
+        {
+          id: 12,
+          name: 'navy'
+        },
+        {
+          id: 13,
+          name: 'yellow'
+        },
+        {
+          id: 14,
+          name: 'crimson'
+        },
+        {
+          id: 15,
+          name: 'salmon'
+        },
+        {
+          id: 16,
+          name: 'triangle'
+        },
+        {
+          id: 17,
+          name: 'smile'
+        },
+        {
+          id: 18,
+          name: 'danger'
+        },
+        {
+          id: 19,
+          name: 'solid'
+        },
+        {
+          id: 20,
+          name: 'square'
+        },
+        {
+          id: 21,
+          name: 'pattern'
+        },
+        {
+          id: 22,
+          name: 'text'
+        },
+        {
+          id: 23,
+          name: 'circle'
+        },
+        {
+          id: 24,
+          name: 'lime'
+        },
+        {
+          id: 25,
+          name: 'grey'
         }
       ]);
     }).then(() => {
