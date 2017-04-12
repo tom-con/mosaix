@@ -9,7 +9,7 @@ a {
 /* ============== GENERAL STYLING ============== */
 body {
   padding: 50px;
-  height: 1000px;
+  height: auto;
   background: url(../images/requires/waterfall.png) no-repeat fixed;
   /*background-repeat: no-repeat;*/
   background-size: cover;
@@ -97,6 +97,9 @@ a:hover {
 .footer-row {
   margin-top: 90px;
 }
+.footer-row2 {
+  margin-top: 130px;
+}
 .copyright {
   color: white;
   margin-bottom: 125px;
@@ -144,6 +147,9 @@ a:hover {
 }
 
 /* ============== LOGIN STYLING ============== */
+/*.log-method {
+  height: 500px;
+}*/
 .log-block,
 .login-require,
 .signup-require {
@@ -161,7 +167,10 @@ a:hover {
   width: 125px;
   border: white 1px solid;
 }
-
+.sidebar-buttoms {
+  /*border: white 1px solid;*/
+  height: 1200px;
+}
 .sidebar-buttom {
   margin-bottom: 5px;
   color: white;
@@ -233,4 +242,10 @@ tr {
   padding-right: 5px;
   background: url(http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg) center center;
   background-size: cover;
+}
+
+/* ==============  MY PROFILE & OTHER PROFILE STYLING ============== */
+.my-prrofile-query-img,
+.other-prrofile-query-img {
+  margin-bottom: 50px;
 }

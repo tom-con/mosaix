@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -23,4 +23,210 @@
       <p>Likes: {{this.likes}}</p>
     {{/each}}
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- BOOTSTRAP Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- MY Styling CSS -->
+  <link rel="stylesheet" href="../../stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <!-- Navigation - START -->
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid navigation">
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="/"><img src="../../images/requires/mainLogo.png" class="logo" alt="MozaiX"></a>
+              </div>
+            </div>
+            <div class="menu">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="{{log.link}}"><button>{{log.text}}</button></a></li>
+              </ul>
+            </div>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search this site">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default search-button">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- Navigation - END -->
+  </header>
+
+  <hr>
+
+  <!-- Content - START -->
+  <div class="container query-content">
+    <!-- Sidebar - START -->
+    <div class="col-md-2 sidebar-buttoms">
+      <div class="my-profile-info">
+        <h3>UserName</h3>
+        <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
+      </div>
+      <br><br>
+      <button class="sidebar-buttom create-now">Create</button>
+      <br>
+      <button class="sidebar-buttom">My Profile</button>
+      <br>
+      <button class="sidebar-buttom">My Collection</button>
+      <br>
+      <button class="sidebar-buttom">My News Feed</button>
+      <br>
+      <button class="sidebar-buttom">Trending Now</button>
+      <br>
+      <button class="sidebar-buttom">All Sprites</button>
+    </div>
+    <!-- Sidebar - END -->
+    <!-- My Sprites - START -->
+    <!-- My Creation -->
+    <div class="row col-md-10">
+      <div class="col-md-2 col-md-offset-9 query-title">
+        <h1>My Creation</h1>
+      </div>
+      <br>
+    </div>
+    <div class="row col-md-10 my-prrofile-query-img query-images">
+        <div class="col-sm-4 col-md-3 sprite">
+            <div class="card">
+                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3 sprite">
+            <div class="card">
+                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3 sprite">
+            <div class="card">
+                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3 sprite">
+            <div class="card">
+                <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+    <!-- My New Feeds -->
+    <div class="row col-md-10">
+      <div class="col-md-2 col-md-offset-9 query-title">
+        <h1>My News Feed</h1>
+      </div>
+      <br>
+    </div>
+    <div class="row col-md-10 my-prrofile-query-img query-images">
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+    </div>
+    <!-- My Trending -->
+    <div class="row col-md-10">
+      <div class="col-md-2 col-md-offset-9 query-title">
+        <h1>My Trending</h1>
+      </div>
+      <br>
+    </div>
+    <div class="row col-md-10 my-prrofile-query-img query-images">
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+      <div class="col-sm-4 col-md-3 sprite">
+          <div class="card">
+              <img class="img-fluid query-img img-thumbnail" src="https://s-media-cache-ak0.pinimg.com/736x/69/65/8d/69658dfcdfd3b61e5a05f9eb0f276302.jpg" alt="Card image cap">
+          </div>
+      </div>
+    </div>
+    <!-- My Sprites - END -->
+  </div>
+  <!-- Content - START -->
+
+  <!-- Footer - START -->
+  <div class="container footer col-md-12">
+    <div class="row footer-row">
+      <div class="card">
+        <div class="card-block">
+          <p class="copyright-block"><span class="copyright">&copy; MosaiX All right reserved.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer - END -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<!-- BOOTSTRAP Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+<!-- MY Javascripting -->
+<!-- <script src="./javascripts/myProfile.js"></script> -->
+
 </html>
