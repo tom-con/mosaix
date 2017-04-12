@@ -171,6 +171,15 @@ a:hover {
   /*border: white 1px solid;*/
   height: 1200px;
 }
+.buttons {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  /*background-color: red;*/
+}
+.buttons button {
+  width: 100%;
+}
 .sidebar-buttom {
   margin-bottom: 5px;
   color: white;
@@ -185,14 +194,14 @@ a:hover {
   width: 300px;
 }
 .query-images {
-  border: red 1px solid;
+  border: red 5px solid;
 }
 .query-img {
   width: 200px;
   height: 200px;
   margin: 5px 0;
   text-align: center;
-  border: yellow 1px solid;
+  border: yellow 3px solid;
   background-color: transparent;
 }
 .sprite {
@@ -215,13 +224,13 @@ a:hover {
   text-align: right;
 }
 .sprite-info {
-  border: red 2px solid;
+  border: red 5px solid;
 }
 .sprite-img {
   width: 400px;
   height: 400px;
   margin: 5px 0;
-  border: yellow 2px solid;
+  border: yellow 3px solid;
   background-color: transparent;
 }
 td,
@@ -248,4 +257,20 @@ tr {
 .my-prrofile-query-img,
 .other-prrofile-query-img {
   margin-bottom: 50px;
+}
+
+/* ==============  SETTING STYLING ============== */
+.setting-content {
+  color: white;
+}
+.setting-info {
+  border: red 5px solid;
+  text-align: center;
+}
+.transparent{
+  background-color: rgba(0, 0, 0, 0.5);
+  /*opacity: 0.5;*/
+}
+.upload-image {
+  margin: auto;
 }
