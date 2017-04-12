@@ -11,6 +11,7 @@
     <title></title>
     <!-- BOOTSTRAP Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <!-- MY Styling CSS -->
     <link rel="stylesheet" href="../../stylesheets/style.css">
 </head>
@@ -61,15 +62,23 @@
             </div>
             <br><br>
             <p>Followers: {{followers}}</p>
-            <button class="sidebar-buttom create-now"><a href="/piskel.html">Create</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/query/{{user.id}}">My Creations</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/query/following">News Feed</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/query/trending">Trending</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button>
+            <table class=buttons>
+            <tr>
+              <td><button class="sidebar-buttom create-now"><a href="/piskel.html">Create</a></button></td>
+            </tr>
+            <tr>
+              <td><button class="sidebar-buttom"><a href="/query/{{user.id}}">My Creations</a></button></td>
+            </tr>
+            <tr>
+              <td><button class="sidebar-buttom"><a href="/query/following">News Feed</a></button></td>
+            </tr>
+            <tr>
+              <td><button class="sidebar-buttom"><a href="/query/trending">Trending</a></button></td>
+            </tr>
+            <tr>
+              <td><button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button></td>
+            </tr>
+            </table>
 
         </div>
         <!-- Sidebar - END -->
