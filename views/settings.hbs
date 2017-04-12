@@ -41,7 +41,7 @@
 <body>
   <header>
     <!-- Navigation - START -->
-          <div class="container navigation-block">
+      <div class="container navigation-block">
             <div class="row">
               <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid navigation">
@@ -69,7 +69,7 @@
               </nav>
             </div>
           </div>
-          <!-- Navigation - END -->
+    <!-- Navigation - END -->
   </header>
 
   <hr>
@@ -93,7 +93,7 @@
       <form ref='uploadForm' id='uploadForm' action='/profile/{{user.id}}/settings/upload' method='post' encType="multipart/form-data">
         <input type="file" name="picture_url" class="upload-image">
         <br>
-        <button type="submit" name="update">Update</button>
+        <button type="submit" name="update" class="setting-buttoms">Update</button>
         <br>
         <br>
         <br>
@@ -104,8 +104,9 @@
         <textarea class="card-text" rows="5" cols="30"></textarea>
         <br>
         <br>
-        <button id="save" data-id="{{user.id}}">Save</button>
-        <button id="delete" data-id="{{user.id}}">Delete Your Account?</button>
+        <button id="save" data-id="{{user.id}}" class="setting-buttoms">Save</button>
+        |
+        <button id="delete" data-id="{{user.id}}" class="setting-buttoms">Delete Your Account?</button>
       </form>
       <br><br>
 
