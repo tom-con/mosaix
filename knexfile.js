@@ -11,6 +11,6 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: 'postgres://localhost/spritr_db'
+    connection: process.env.DATABASE_URL
   }
 };
