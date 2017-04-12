@@ -11,19 +11,31 @@ body {
   padding: 50px;
   height: auto;
   background: url(../images/requires/waterfall.png) no-repeat fixed;
-  /*background-repeat: no-repeat;*/
+  /*background: white;*/
   background-size: cover;
   font-family: 'Press Start 2P', cursive;
+}
+hr {
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px red inset;
 }
 a,
 a:hover {
 	text-decoration:none;
 }
+.navigation-block {
+  padding: 0;
+  margin: 0;
+  margin-top: -20px;
+}
 .navigation {
-  background-color: gray;
+  background-color: transparent;
+  width: 1390px;
 }
 .navbar-default {
-	background-color: #fff;
+	background-color: transparent;
+  border-color: transparent;
 	border-radius:0;
 	border-right:0;
 	border-left:0;
@@ -48,9 +60,12 @@ a:hover {
 }
 .navbar-brand img {
 	float: left;
-	margin-top:-34px;
-  margin-left: -5px;
-  width: 400px;
+	margin-top:-42px;
+  margin-left: -40px;
+  width: 450px;
+}
+.searchbox {
+  margin-top: 14px;
 }
 .menu {
 	font-size:14px;
@@ -74,23 +89,23 @@ a:hover {
 	line-height: 1.42857143;
 	border-bottom: 3px solid transparent;
 	border-radius:0;
-	color:#000;
-	border-top:0;
-	border-right:0;
-	border-left:0;
+	color:white;
+	margin-left: 15px;
+  margin-right: -5px;
 }
 .nav-tabs > li > a:hover {
-  border-color: white white red;
-   color: red;
+  border-color: red;
+  color: red;
+  font-weight: bold;
   border-radius:0;
-  background-color:white;
+  background-color: rgba(0, 0, 0, 0.5)
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: white;
+  color: red;
   cursor: default;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.5)
   border: 0;
   border-bottom-color: transparent;
   cursor:pointer;
@@ -192,13 +207,15 @@ a:hover {
   border-color: yellow;
   background-color: transparent;
 }
-.create-now {
+.create-now{
   border-color: red;
 }
-.sidebar-buttom {
+.sidebar-buttom,
+.sidebar-buttom a {
   color: white;
 }
-.create-now {
+.create-now,
+.create-now a  {
   color: yellow;
 }
 .query-title {
