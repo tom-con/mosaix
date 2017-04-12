@@ -103,6 +103,18 @@ a:hover {
   border-bottom-color: transparent;
   cursor:pointer;
 }
+.login-logout-buttom {
+  background-color: transparent;
+  border-color: transparent;
+}
+.login-logout-buttom:hover,
+.login-logout-buttom:active {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+  border-radius:0;
+  background-color: rgba(0, 0, 0, 0.5)
+}
 .footer-row {
   margin-top: 90px;
 }
@@ -278,6 +290,14 @@ td {
 }
 .comment-info {
   margin-top: 50px;
+}
+.comment-buttoms:hover,
+.comment-buttoms:active {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+  border-radius:0;
+  background-color: rgba(0, 0, 0, 0.5)
 }
 .comment-img {
   width: 100px;
