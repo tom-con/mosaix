@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 let makeJWT = (user) => {
   return jwt.sign({
     id: user.id,
-    username: user.username
+    username: user.username,
+    picture: user.user_picture
   }, process.env.JWT_SECRET);
 }
 

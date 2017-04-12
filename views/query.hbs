@@ -47,16 +47,26 @@
     <div class="container query-content">
         <!-- Sidebar - START -->
         <div class="col-md-2 sidebar-buttoms">
-            <br><br><br>
-            <button class="sidebar-buttom create-now"><a href="/piskel.html">Create</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="{{myCreaLink}}">{{myCreaText}}</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/query/following">News Feed</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/query/trending">Trending</a></button>
-            <br>
-            <button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button>
+            {{{profInfo}}}
+            <br><br>
+            <table class=buttons>
+                <tr>
+                    <td><button class="sidebar-buttom create-now"><a href="/piskel.html">Create</a></button></td>
+                </tr>
+                {{{myProfile}}}
+                <tr>
+                    <td><button class="sidebar-buttom"><a href="{{myCreaLink}}">{{myCreaText}}</a></button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom"><a href="/query/following">News Feed</a></button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom"><a href="/query/trending">Trending</a></button></td>
+                </tr>
+                <tr>
+                    <td><button class="sidebar-buttom"><a href="/sprite">All Sprites</a></button></td>
+                </tr>
+            </table>
         </div>
         <!-- Sidebar - END -->
         <!-- Query Content - START -->

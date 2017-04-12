@@ -29,10 +29,13 @@ router.get('/trending', authorized, (req, res, next) => {
     .then((allSprites) => {
       res.render('query', {
         title: "Trending Sprites",
+        profInfo: `<h3>${req.locals.user.username}</h3>
+        <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
+        myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
         sprites: allSprites,
-        log: login,
-        myCreaText: 'Create Account',
-        myCreaLink: '/login'
+        log: logout,
+        myCreaText: 'My Creations',
+        myCreaLink: `/query/creations`
       })
     })
 });
@@ -44,8 +47,8 @@ router.get('/trending', (req, res, next) => {
         title: "Trending Sprites",
         sprites: allSprites,
         log: login,
-        myCreaText: 'My Creations',
-        myCreaLink: `/query/creations`
+        myCreaText: 'Create Account',
+        myCreaLink: '/login'
       })
     })
 });
@@ -55,6 +58,9 @@ router.get('/following', authorized, (req, res, next) => {
     .then((allSprites) => {
       res.render('query', {
         title: "Following",
+        profInfo: `<h3>${req.locals.user.username}</h3>
+        <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
+        myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
         sprites: allSprites,
         log: login,
         user: req.locals.user,
@@ -74,6 +80,9 @@ router.get('/creations', authorized, (req, res, next) => {
     .then((allSprites) => {
       res.render('query', {
         title: "My Creations",
+        profInfo: `<h3>${req.locals.user.username}</h3>
+        <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
+        myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
         sprites: allSprites,
         log: login,
         user: req.locals.user,
@@ -96,6 +105,9 @@ router.get('/:tag', authorized, (req, res, next) => {
         console.log(allSprites);
         res.render('query', {
           title: `Search results for: '${req.params.tag}'`,
+          profInfo: `<h3>${req.locals.user.username}</h3>
+          <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
+          myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
           sprites: allSprites,
           log: login,
           myCreaText: 'My Creations',

@@ -21,13 +21,31 @@ let logout = {
   text: 'Logout'
 };
 
+router.get('/', authorized, (req, res, next) => {
+  getAllSprites()
+    .then((allSprites) => {
+      res.render('sprites', {
+        profInfo: `<h3>${req.locals.user.username}</h3>
+        <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
+        myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
+        title: "All Sprites",
+        sprites: allSprites,
+        log: logout,
+        myCreaText: 'My Creations',
+        myCreaLink: '/query/creations'
+      })
+    })
+});
+
 router.get('/', (req, res, next) => {
   getAllSprites()
     .then((allSprites) => {
       res.render('sprites', {
         title: "All Sprites",
         sprites: allSprites,
-        log: login
+        log: login,
+        myCreaText: 'Create Account',
+        myCreaLink: '/login'
       })
     })
 });
