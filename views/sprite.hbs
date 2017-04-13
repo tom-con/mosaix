@@ -53,7 +53,7 @@
     <div class="col-md-2 sidebar-buttoms">
       <div class="my-profile-info">
           <a href="/profile/{{sprite.user_id}}"><h3>{{sprite.username}}</h3></a>
-        <img src="{{user.user_picture}}" class="my-profile-img" alt="UserName">
+        <img src="{{currentUser.picture}}" class="my-profile-img" alt="UserName">
       </div>
     </div>
     <!-- Sidebar - END -->
@@ -61,7 +61,6 @@
     <div class="row col-md-10">
       <div class="col-md-10 sprite-title">
         <h1 class="left-title">{{sprite.name}}    <div id="editBox">
-            {{{edit}}}
           </div> <a href="/profile/{{sprite.user_id}}"><span class="right-title pull-right">by {{sprite.username}}</span></a></h1>
 
       </div>
