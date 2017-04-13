@@ -1,4 +1,7 @@
 /* ============== GENERAL STYLING ============== */
+*:focus {
+  outline: none;
+}
 body {
   padding: 50px;
   height: auto;
@@ -103,13 +106,16 @@ a:hover {
   border-bottom-color: transparent;
   cursor:pointer;
 }
+.currUser {
+  margin-left: 20px;
+}
 .login-logout-buttom {
   background-color: transparent;
   border-color: transparent;
 }
 .login-logout-buttom:hover,
 .login-logout-buttom:active {
-  border-color: red;
+  border-color: none;
   color: red;
   font-weight: bold;
   border-radius:0;
@@ -338,7 +344,7 @@ td {
   margin: auto;
 }
 
-
+/* ==============  OAUTH STYLING ============== */
 #googleSign {
   margin: auto;
 }

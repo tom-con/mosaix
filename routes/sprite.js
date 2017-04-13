@@ -81,13 +81,13 @@ router.get('/:id', authorized, (req, res, next) => {
       let tagCreate = "";
       let edit = "";
       if (thisSprite.user_id === user.id) {
-        tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname"></label><button type="submit">Add</button></form>`
+        tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname" class="transparent"></label><button type="submit" class="tag-buttom">Add</button></form>`
         edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
       }
       res.render('sprite', {
         sprite: thisSprite,
         currentUser: user.username,
-        comment: `<form action="/comments/${thisSprite.id}" method="post"><textarea height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button type="submit">Submit</button></form>`,
+        comment: `<form action="/comments/${thisSprite.id}" method="post"><textarea class="comment-text transparent" height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button class="comment-buttoms" type="submit">Submit</button></form>`,
         tag: tagCreate,
         log: logout,
         edit: edit

@@ -79,6 +79,7 @@ router.get('/:id', authorized, (req, res, next) => {
         getSpritesByUser(id)
           .then((allSprites) => {
             let data = {
+              currUser: req.locals.user,
               user: userFromKnex,
               sprites: allSprites,
               log: logout,
