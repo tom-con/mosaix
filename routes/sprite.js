@@ -93,7 +93,7 @@ router.get('/:id', authorized, (req, res, next) => {
       res.render('sprite', {
         sprite: thisSprite,
         currentUser: user,
-        comment: `<form action="/comments/${thisSprite.id}" method="post"><textarea class="comment-text transparent" height="200px" name="content" placeholder=" Add a comment . . ."></textarea><button class="comment-buttoms" type="submit">Submit</button></form>`,
+        comment: `<form class="comment-form" action="/comments/${thisSprite.id}" method="post"><textarea class="comment-text transparent" height="200px" name="content" placeholder=" Add a comment . . ."></textarea><br><button class="comment-buttoms" type="submit">Submit</button></form><br>`,
         tag: tagCreate,
         log: logout,
         edit: edit

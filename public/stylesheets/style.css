@@ -13,7 +13,7 @@ body {
 hr {
   height: 10px;
 	border: 0;
-	box-shadow: 0 10px 10px -10px red inset;
+	box-shadow: 0 10px 10px -10px#7f0000 inset;
 }
 a,
 a:hover {
@@ -90,8 +90,8 @@ a:hover {
   margin-right: -5px;
 }
 .nav-tabs > li > a:hover {
-  border-color: red;
-  color: red;
+  border-color:#7f0000;
+  color:#7f0000;
   font-weight: bold;
   border-radius:0;
   background-color: rgba(0, 0, 0, 0.5)
@@ -99,7 +99,7 @@ a:hover {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: red;
+  color:#7f0000;
   cursor: default;
   background-color: rgba(0, 0, 0, 0.5)
   border: 0;
@@ -116,7 +116,7 @@ a:hover {
 .login-logout-buttom:hover,
 .login-logout-buttom:active {
   border-color: none;
-  color: red;
+  color:#7f0000;
   font-weight: bold;
   border-radius:0;
   background-color: rgba(0, 0, 0, 0.5)
@@ -170,7 +170,7 @@ a:hover {
   text-align: right;
 }
 .splash-span {
-  color: red;
+  color:#7f0000;
 }
 
 /* ============== LOGIN STYLING ============== */
@@ -203,23 +203,23 @@ a:hover {
   margin-left: -15px;
   margin-right: 30px;
 }
-.buttons {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  /*background-color: red;*/
-}
+
 .buttons button {
   width: 100%;
 }
+
+.tag-buttom {
+  background: black;
+}
+
 .sidebar-buttom {
   margin-bottom: 5px;
   /*color: white;*/
-  border-color: yellow;
+  border-color: #e7bb01;
   background-color: transparent;
 }
 .create-now{
-  border-color: red;
+  border-color:#7f0000;
 }
 .sidebar-buttom,
 .sidebar-buttom a {
@@ -227,7 +227,7 @@ a:hover {
 }
 .create-now,
 .create-now a  {
-  color: yellow;
+  color: #e7bb01;
 }
 .query-page {
   text-align: center;
@@ -247,7 +247,7 @@ a:hover {
   width: 950px;
 }
 .query-images {
-  border: red 5px solid;
+  border:#7f0000 5px solid;
 
 }
 .query-img {
@@ -255,7 +255,7 @@ a:hover {
   height: 200px;
   margin: 5px 0;
   text-align: center;
-  border: yellow 3px solid;
+  border: #e7bb01 3px solid;
   background-color: transparent;
 }
 .sprite {
@@ -278,40 +278,50 @@ a:hover {
   text-align: right;
 }
 .sprite-info {
-  border: red 5px solid;
+  border:#7f0000 5px solid;
 }
 .sprite-img {
   width: 400px;
   height: 400px;
   margin: 5px 0;
-  border: yellow 3px solid;
+  border: #e7bb01 3px solid;
   background-color: transparent;
 }
 td {
   padding-right: 10px;
 }
+
+.comment-form {
+  padding: 25px 25px 0px 25px;
+}
+
 .comment-section {
   height: 200px !important;
   overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.75)
 }
 .comment-info {
   margin-top: 50px;
 }
 .comment-buttoms {
-  border-color: red;
-  color: red;
+  border-color:#7f0000;
+  color:#7f0000;
   font-weight: bold;
   border-radius:0;
   background-color: rgba(0, 0, 0, 0.5)
 }
 .comment-buttoms:hover,
 .comment-buttoms:active {
-  border-color: red;
-  color: red;
+  border-color:#7f0000;
+  color:#7f0000;
   font-weight: bold;
   border-radius:0;
   background-color: rgba(0, 0, 0, 0.5)
 }
+.comment-table {
+  padding-left: 25px;
+}
+
 .comment-img {
   width: 100px;
   height: 100px;
@@ -332,13 +342,13 @@ td {
   color: white;
 }
 .setting-info {
-  border: red 5px solid;
+  border:#7f0000 5px solid;
   text-align: center;
 }
 .setting-buttoms:hover,
 .setting-buttoms:active {
-  border-color: red;
-  color: red;
+  border-color:#7f0000;
+  color:#7f0000;
   font-weight: bold;
   border-radius:0;
   background-color: rgba(0, 0, 0, 0.5)
@@ -352,6 +362,3 @@ td {
 }
 
 /* ==============  OAUTH STYLING ============== */
-#googleSign {
-  margin: auto;
-}

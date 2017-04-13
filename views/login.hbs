@@ -28,7 +28,7 @@
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function() {
           $.ajax({
-            
+
           })
         });
     }
@@ -97,8 +97,7 @@
                                 <button type="submit">Login</button>
                                 <br>
                                 <br>
-                                <div id="googleSign"class="g-signin2" data-onsuccess="onSignIn"></div>
-                                <a href="#" onclick="signOut();">Sign out</a>
+                                <div id="googleSign"class="g-signin2 col-md-offset-4" data-onsuccess="onSignIn"></div>
                             </form>
 
                             <h4>{{error}}</h4>

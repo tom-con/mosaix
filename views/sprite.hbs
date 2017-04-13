@@ -68,26 +68,26 @@
     </div>
     <div class="row col-md-10 sprite-info transparent">
         <div class="col-sm-6 col-md-6 col-md-offset-3 sprite">
+          <div class="col-sm-6 col-md-8 col-md-offset-2">
+            <div class="card">
+              <div class="card-block sprite-description">
+              <p class="card-text left">{{sprite.description}}</p>
+              </div>
+            </div>
+          </div>
             <div class="card">
                 <img id="theSprite" class="img-fluid sprite-img img-thumbnail" src="{{sprite.render_url}}" data-id="{{sprite.id}}">
 
             </div>
             <div class="sprite-state">
-              <p>heart: <a href="/sprite/{{sprite.id}}/like">{{sprite.likes}}</p></a>
+              <p><a href="/sprite/{{sprite.id}}/like"><img height="19px"src="../images/requires/Red_Heart.png"></a> {{sprite.likes}}</p>
               {{#each sprite.tags}}
                   <a href="/query/{{this.tagname}}">{{this.tagname}}</a> <span class="removeTag" data-id="{{this.linkId}}">X</span>
               {{/each}}
               {{{tag}}}
             </div>
         </div>
-        <div class="col-sm-6 col-md-8 col-md-offset-2">
-          <div class="card">
-            <div class="card-block sprite-description">
-              <h4 class="card-title left">About this sprite:</h4>
-              <p class="card-text left">{{sprite.description}}</p>
-            </div>
-          </div>
-        </div>
+
   </div>
   <!-- Individual Sprite Content - END -->
   <br>
@@ -95,9 +95,10 @@
 
   <!-- Individual Sprite Comment - START -->
   <div class="row col-md-10">
-    <div class="col-sm-6 col-md-8 col-md-offset-5 comment-info">
+    <div class="col-sm-6 col-md-8 col-md-offset-2 comment-info">
       <div class="comment-section">
-        <table>
+        {{{comment}}}
+        <table class="comment-table">
           <tbody>
             {{#each sprite.comments}}
             <tr>
@@ -107,7 +108,7 @@
               </div>
             </tr>
             {{/each}}
-            {{error}} {{{comment}}}
+
           </tbody>
         </table>
       </div>
