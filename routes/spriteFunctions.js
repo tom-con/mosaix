@@ -81,10 +81,11 @@ let getHighestLiked = (spriteIds) => {
   return knex('sprites')
     .select('likes.sprite_id')
     .join('likes', 'sprites.id', 'likes.sprite_id')
-    .count('*')
+    .count('* as mycount')
     .whereIn('likes.sprite_id', spriteIds.map(el => el.id))
     .groupBy('likes.sprite_id', 'sprites.created_at')
-    .orderBy('sprites.created_at', 'DESC')
+    .orderBy('mycount', 'DESC')
+    .debug(true)
 }
 
 let getSpritesByUserLatest = (userId, limit) => {

@@ -56,20 +56,25 @@ router.get('/piskel', authorized, (req, res, next) => {
     .returning(['id', 'name', 'user_id', 'render_url'])
     .insert({
       name: sprite.name,
+      description: sprite.description,
       user_id: req.locals.user.id,
       render_url: JSON.parse(sprite.layers[0]).chunks[0].base64PNG
     })
     .then((sprite) => {
       let likedSprite = sprite[0];
       knex('likes')
-        .insert({author_id: req.locals.user.id, sprite_id: likedSprite.id, isLiked: false})
+        .insert({
+          author_id: req.locals.user.id,
+          sprite_id: likedSprite.id,
+          isLiked: false
+        })
         .then(() => {
-          res.status(200).send(true);
+          res.status(200).send((req.locals.user.id).toString());
         })
     })
 })
 
-router.get('/piskel', (req,res,next) => {
+router.get('/piskel', (req, res, next) => {
   console.log('NEED ERROR HANDLING FOR CREATION WITHOUT AUTH');
 })
 
