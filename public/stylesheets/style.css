@@ -297,6 +297,13 @@ td {
 .comment-info {
   margin-top: 50px;
 }
+.comment-buttoms {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+  border-radius:0;
+  background-color: rgba(0, 0, 0, 0.5)
+}
 .comment-buttoms:hover,
 .comment-buttoms:active {
   border-color: red;

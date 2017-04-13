@@ -1,6 +1,4 @@
 
-<!-- http://localhost:3000/sprite/1 -->
-
 <!DOCTYPE html>
 <html>
 
@@ -52,10 +50,10 @@
 
   <div class="container sprite-content">
     <!-- Sidebar - START -->
-    <div class="col-md-2">
+    <div class="col-md-2 sidebar-buttoms">
       <div class="my-profile-info">
           <a href="/profile/{{sprite.user_id}}"><h3>{{sprite.username}}</h3></a>
-        <img src="https://pbs.twimg.com/media/BlYDY4ECIAAU34F.png" class="my-profile-img" alt="UserName">
+        <img src="{{user.user_picture}}" class="my-profile-img" alt="UserName">
       </div>
     </div>
     <!-- Sidebar - END -->
@@ -86,8 +84,8 @@
         <div class="col-sm-6 col-md-8 col-md-offset-2">
           <div class="card">
             <div class="card-block sprite-description">
-              <h4 class="card-title left">Detail About Sprite: </h4>
-              <p class="card-text left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h4 class="card-title left">About this sprite:</h4>
+              <p class="card-text left">{{sprite.description}}</p>
             </div>
           </div>
         </div>
@@ -104,7 +102,7 @@
           <tbody>
             {{#each sprite.comments}}
             <tr>
-              <td class="comment-img"><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg">{{this.author}}</a></td>
+              <td><a href="http://img110.xooimage.com/files/5/9/7/lilblobby-51f5ebe.jpg">{{this.author}}</a></td>
               <div id="{{this.comment_id}}" class="{{this.author}}" data-id="{{this.comment_id}}">
               <td class="comment-text">{{this.content}}</td>
               </div>

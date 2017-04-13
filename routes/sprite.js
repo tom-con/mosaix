@@ -89,6 +89,7 @@ router.get('/:id', authorized, (req, res, next) => {
         tagCreate = `<form action="/tags/${thisSprite.id}" method="post"><label>Create Tag: <input type="text" name="tagname" class="transparent"></label><button type="submit" class="tag-buttom">Add</button></form>`
         edit = `<button id="edit" data-id="${thisSprite.id}">Edit</button>`
       }
+      console.log(thisSprite);
       res.render('sprite', {
         sprite: thisSprite,
         currentUser: user.username,
