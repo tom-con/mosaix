@@ -20,6 +20,7 @@ router.get('/', authorized, (req, res, next) => {
       console.log(allSprites);
       res.render('index', {
         sprites: allSprites,
+        currUser: req.locals.user,
         button: {
           link: `profile/${req.locals.user.id}`,
           name: 'My profile'

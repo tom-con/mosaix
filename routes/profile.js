@@ -33,6 +33,7 @@ router.get('/:id', authorized, (req, res, next) => {
       .then((userFromKnex) => {
         if (userFromKnex) {
           let data = {
+            currUser: req.locals.user,
             user: userFromKnex,
             log: logout,
             followers: 0

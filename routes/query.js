@@ -28,6 +28,7 @@ router.get('/trending', authorized, (req, res, next) => {
   getAllSpritesLatest(20)
     .then((allSprites) => {
       res.render('query', {
+        currUser: req.locals.user,
         title: "Trending Sprites",
         profInfo: `<h3>${req.locals.user.username}</h3>
         <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
@@ -79,6 +80,7 @@ router.get('/creations', authorized, (req, res, next) => {
   getSpritesByUser(req.locals.user.id)
     .then((allSprites) => {
       res.render('query', {
+        currUser: req.locals.user,
         title: "My Creations",
         profInfo: `<h3>${req.locals.user.username}</h3>
         <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
@@ -104,6 +106,7 @@ router.get('/:tag', authorized, (req, res, next) => {
       .then((allSprites) => {
         console.log(allSprites);
         res.render('query', {
+          currUser: req.locals.user,
           title: `Search results for: '${req.params.tag}'`,
           profInfo: `<h3>${req.locals.user.username}</h3>
           <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
