@@ -34,7 +34,8 @@ router.get('/', (req, res, next) => {
     .then((allSprites) => {
       res.render('index', {
         sprites: allSprites,
-        currUser: req.locals.user,
+        error1: '<!--',
+        error2: '-->',
         button: {
           link: `login`,
           name: 'Login'

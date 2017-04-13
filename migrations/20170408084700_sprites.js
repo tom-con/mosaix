@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('sprites', (tbl) => {
     tbl.increments();
-    tbl.string('name', 64).unique().notNullable();
+    tbl.string('name', 32).unique().notNullable();
     tbl.integer('user_id').notNullable().references('users.id').onDelete('CASCADE');
     tbl.text('description');
     tbl.text('render_url').notNullable();

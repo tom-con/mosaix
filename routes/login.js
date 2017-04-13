@@ -23,7 +23,8 @@ router.post('/', (req, res, next) => {
       if (userFromKnex) {
         bcrypt.compare(plainTextPassword, userFromKnex.hashed_password, (err, result) => {
           if (result) {
-            res.cookie('token', makeJWT(userFromKnex));
+            let token = makeJWT(userFromKnex)
+            res.cookie('token', token);
             res.redirect(`/profile/${userFromKnex.id}`);
           } else {
             res.render('login', {
@@ -55,13 +56,15 @@ router.post('/signup', ev(validations.post), (req, res, next) => {
       .returning('*')
       .insert(newUser)
       .then((user) => {
-        res.cookie('token', makeJWT(user[0]));
+        let token = makeJWT(user[0])
+        res.cookie('token', token);
         res.redirect(`/profile/${user[0].id}`)
       })
   }
 })
 
 router.get('/logout', (req, res, next) => {
+  console.log("GETTING HERE ACCIDENTALLY");
   res.clearCookie('token');
   res.redirect('/');
 })

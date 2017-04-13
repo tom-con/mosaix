@@ -58,12 +58,13 @@ router.get('/following', authorized, (req, res, next) => {
   getSpritesImFollowing(req.locals.user.id, 20)
     .then((allSprites) => {
       res.render('query', {
+                currUser: req.locals.user,
         title: "Following",
         profInfo: `<h3>${req.locals.user.username}</h3>
         <img src="${req.locals.user.picture}" class="my-profile-img" alt="profile picture">`,
         myProfile: `<tr><td><button class="sidebar-buttom"><a href="/profile/${req.locals.user.id}">My Profile</a></button></td></tr>`,
         sprites: allSprites,
-        log: login,
+        log: logout,
         user: req.locals.user,
         myCreaText: 'My Creations',
         myCreaLink: `/query/creations`
@@ -104,7 +105,7 @@ router.get('/:tag', authorized, (req, res, next) => {
     .then((spriteIds) => {
       getSpritesBySpriteIds(spriteIds)
       .then((allSprites) => {
-        console.log(allSprites);
+  
         res.render('query', {
           currUser: req.locals.user,
           title: `Search results for: '${req.params.tag}'`,
