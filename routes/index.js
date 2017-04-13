@@ -17,7 +17,6 @@ let logout = {
 router.get('/', authorized, (req, res, next) => {
   getAllSpritesLatest(9)
     .then((allSprites) => {
-      console.log(allSprites);
       res.render('index', {
         sprites: allSprites,
         currUser: req.locals.user,
@@ -31,13 +30,18 @@ router.get('/', authorized, (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  res.render('index', {
-    button: {
-      link: `login`,
-      name: 'Login'
-    },
-    log: login
-  });
+  getAllSpritesLatest(9)
+    .then((allSprites) => {
+      res.render('index', {
+        sprites: allSprites,
+        currUser: req.locals.user,
+        button: {
+          link: `login`,
+          name: 'Login'
+        },
+        log: login
+      });
+    })
 })
 
 module.exports = router;
