@@ -81,7 +81,7 @@
       {{#each sprites}}
         <div class="col-sm-4 col-md-3 sprite">
             <div class="card">
-              <a href="/sprite/{{this.id}}"><h4>{{this.name}}</h4></a>
+              <a href="/sprite/{{this.id}}"><h4 class="spriteName">{{this.name}}</h4></a>
                 <img class="img-fluid query-img img-thumbnail" src="{{this.render_url}}" alt="Card image cap">
                 <p>Likes: {{this.likes}}</p>
             </div>
@@ -109,6 +109,9 @@
   crossorigin="anonymous"></script>
 <!-- BOOTSTRAP Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../javascripts/renderSprites.js">
+
+</script>
 </body>
 <!-- MY Javascripting -->
 <!-- <script src="./javascripts/profile.js"></script> -->
