@@ -3,11 +3,6 @@ const router = express.Router();
 const knex = require('../knex');
 const authorized = require('./loginFunctions').authorized;
 
-
-router.get('/:id', (req, res, next) => {
-
-});
-
 router.post('/', authorized, (req, res, next) => {
   knex('followers')
     .where('followed', req.body.id)

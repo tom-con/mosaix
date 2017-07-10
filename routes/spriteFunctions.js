@@ -124,7 +124,6 @@ let getSpritesImFollowing = (userId, limit) => {
 }
 
 let getSpritesBySpriteIds = (spriteIds) => {
-  console.log(spriteIds);
   return Promise.all(spriteIds.map(el => getSpriteWithUserCommentsLikes(el.id)))
 }
 
